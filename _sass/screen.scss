@@ -1,0 +1,287 @@
+// ---------------------------------------------------------------------------
+// Imports
+
+@import "base";
+@import "compass/css3";
+
+/* -------------------------------------------------------------------------*/
+/* Layout */
+
+.container {
+  @include container;
+}
+
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    background: url('../images/bg.jpg') no-repeat fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    text-shadow: 0 0 10px rgba(0,0,0,.7);
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
+a {
+    text-decoration: none;
+    color: #ffcc00;
+    
+    &:hover, &:active { color: #ffdb79; }
+}
+
+//* @group ------ Header ------ */
+
+header {
+    padding: rhythm(2) 0 rhythm(1);
+    text-align: left;
+}
+
+#home header {
+    padding: rhythm(2) 0;
+}
+
+.site-title {
+    float: left;
+}
+
+.user input[type=text], 
+.user input[type=password] {
+    background-color: rgba(255,255,255,.05);
+    border: 0;
+}
+
+.user {
+    float: right;
+    @include leader();
+}
+
+.user, .register, .login {
+    display: inline-block;
+}
+
+.login form { display: none; }
+
+#search-form {
+    @include container;
+    @include leader();
+    background-color: rgba(255,255,255,.05);
+    @include border-radius(10px);
+    padding: rhythm(1) gutter(12);
+    opacity: .75;
+    
+    &:hover, &:active {
+        opacity: 1;
+    }
+    
+    input[type=text] {
+        border: 0;
+        height: rhythm(1.5);
+        width: 75%;
+        float: left;
+    }
+    
+    input[type=submit] {
+        border: 0;
+        height: rhythm(1.5);
+        width: 25%;
+        float: left;
+        background-color: $teal;
+        color: #fff;
+    }
+}
+
+//* @end */
+
+//* @group ------ Navigation ------ */
+
+header nav {
+    display: inline-block;
+    clear: both;
+    text-transform: uppercase;
+    @include leader(1);
+    @include border-radius(3px);
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    
+    li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    
+    ul {
+        display: none;
+    }
+}
+
+.pagination {
+    padding-left: 0;
+    list-style-type: none;
+    font-size: 0;
+    
+    li { 
+        display: inline-block; 
+        height: rhythm(2);
+        font-size: $base-font-size;
+        line-height: 2 * $base-line-height;
+        padding-right: 20px;
+    }
+    
+    input[type=text] {
+        width: 3em;
+        background-color: transparent;
+        border: 0;
+        color: #FFF;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+}
+
+//* @end */
+
+//* @group ------ Global elements ------ */
+
+div[role=main] {
+    @include container;
+}
+
+.button {
+    padding: rhythm(.5) gutter(6);
+    display: inline-block;
+    @include border-radius(5px);
+}
+
+//* @end */
+
+//* @group ------ Home ------ */
+
+#home div[role=main] {
+    padding: 0;
+    margin: 0;
+    max-width: intrinsic;
+}
+
+#home #intro {
+    @include container;
+    text-align: center;
+    line-height: 2 * $base-line-height;
+}
+
+#intro h1 {
+    font-weight: normal;
+}
+
+#intro .button {
+    background-color: $red;
+    clear: both;
+    @include leader();
+    color: #fff;
+}
+
+#home #search-form {
+    width: 100%;
+    padding: rhythm(1) gutter(6);
+    float: left;
+}
+
+//* @end */
+
+//* @group ------ Items/Browse ------ */
+
+.items.browse {
+    .item {
+        @include trailing-border(1px, 2, $base-font-size, solid);
+        border-color: rgba(255,255,255,.15);
+        @include trailer(2);
+    }
+}
+
+//* @end */
+
+//* @group ------ Groups/Browse ------ */
+
+.groups.browse {
+    h3 {
+        display: none;
+    }
+
+    .groups {
+        font-size: 0;
+        @include leader();
+    }
+    .hentry {
+        font-color: #363636;
+        background-color: #fff;
+        color: #696969;
+        text-shadow: none;
+        width: 32%;
+        margin-right: 2%;
+        padding: rhythm(.5) gutter(12);
+        display: inline-block;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+        vertical-align: top;
+        @include padding-trailer(4);
+        @include trailer();
+        position: relative;
+        
+        &:nth-of-type(3n) {
+            margin-right: 0;
+        }
+    }
+    
+    .groups-tags ul {
+        padding-left: 0;
+        list-style-type: none;
+        display: inline;
+        
+        li {
+            display: inline;
+            
+            &:after {
+                content: ", ";
+            }
+            
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+    
+    .groups-tags h3 {
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+        display: inline;
+        
+        &:after {
+          content: ": ";
+        }
+    }
+    
+    #groups-member-count, #groups-item-count {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        @include padding-trailer(.5);
+    }
+    
+    #groups-item-count {
+        left: 50%;
+        border-left: 1px solid #e7e7e7;
+        padding: 0 10px rhythm(.5);
+    }
+    
+    .count {
+        font-size: 2 * $base-font-size;
+        display: block;
+    }
+}
+
+//* @end */
