@@ -95,6 +95,14 @@ header {
 
 //* @end */
 
+//* @group ------ Footer ------ */
+
+footer {
+    clear: both;
+}
+
+//* @end */
+
 //* @group ------ Navigation ------ */
 
 header nav {
@@ -205,6 +213,26 @@ div[role=main] {
 
 //* @end */
 
+//* @group ------ Items/Show ------ */
+
+.items.show { 
+    div[role="main"] > * {
+        @include span-columns(8 omega);
+    }
+    
+    div[role="main"] > h1 {
+        width: 100%;
+        padding: 0;
+        margin: 0 0 rhythm(1);
+    }
+    
+    #sidebar {
+        @include span-columns(4 alpha);
+    }
+}
+
+//* @end */
+
 //* @group ------ Groups/Browse ------ */
 
 .groups.browse {
@@ -281,6 +309,26 @@ div[role=main] {
     .count {
         font-size: 2 * $base-font-size;
         display: block;
+    }
+}
+
+//* @end */
+
+//* @group ------ Sites ------ */
+
+.sites-site {
+    background-color: #fff;
+    color: #696969;
+    text-shadow: none;
+    padding: rhythm(.5) gutter(12);
+    @include span-columns(4);
+    
+    &:first-of-type, &:nth-of-type(3n+1) {
+        @include span-columns(4 alpha);
+    }
+    
+    &:nth-of-type(3n) {
+        @include span-columns(4 omega);
     }
 }
 
