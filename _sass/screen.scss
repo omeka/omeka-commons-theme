@@ -32,6 +32,8 @@ a {
     &:hover, &:active { color: #ffdb79; }
 }
 
+fieldset { border: 0; }
+
 //* @group ------ Header ------ */
 
 header {
@@ -57,12 +59,6 @@ header {
     float: right;
     @include leader();
 }
-
-.user, .register, .login {
-    display: inline-block;
-}
-
-.login form { display: none; }
 
 #search-form {
     @include container;
@@ -169,12 +165,6 @@ div[role=main] {
 //* @end */
 
 //* @group ------ Home ------ */
-
-#home div[role=main] {
-    padding: 0;
-    margin: 0;
-    max-width: intrinsic;
-}
 
 #home #intro {
     @include container;
@@ -309,6 +299,29 @@ div[role=main] {
     .count {
         font-size: 2 * $base-font-size;
         display: block;
+    }
+}
+
+//* @end */
+
+//* @group ------ Groups/Show ------ */
+
+.groups.show {
+    .groups-members {
+        padding-left: 0;
+
+        li {
+            display: inline-block;
+            list-style-type: none;
+        }
+    }
+    
+    #sidebar {
+        @include span-columns(4 alpha);
+    }
+    
+    #primary {
+        @include span-columns(8 omega);
     }
 }
 
