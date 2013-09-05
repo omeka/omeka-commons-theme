@@ -29,6 +29,8 @@
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
 
+<?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
+
     <header>
         <div class="container">
             <div class="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
@@ -36,19 +38,10 @@
             <nav>
                 <?php echo public_nav_main(); ?>
             </nav>
-                
-            <div class="user">
-                <span class="register"><a href="#">Register</a></span>
-                <div class="login">
-                    <span><a href="#">Login</a></span>
-                    <form>
-                        <input type="text" placeholder="Name" />
-                        <input type="password" />
-                    </form>
-                </div>
-            </div>
 
         </div>
+        
+        <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
         
         <?php if (@$bodyid !== 'home'): ?>
         <?php echo search_form(); ?>
