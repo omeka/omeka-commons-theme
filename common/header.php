@@ -24,6 +24,7 @@
     <?php queue_css_url('http://fonts.googleapis.com/css?family=Raleway:400,600'); ?> 
     <?php queue_css_file('screen'); ?>
     <?php echo head_css(); ?>
+    <?php echo head_js(); ?>
     
 </head>
 
