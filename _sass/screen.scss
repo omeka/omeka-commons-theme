@@ -38,7 +38,7 @@ fieldset { border: 0; }
 
 header {
     padding: rhythm(2) 0 rhythm(1);
-    text-align: left;
+    text-align: right;
 }
 
 #home header {
@@ -108,20 +108,50 @@ header nav {
     @include leader(1);
     @include border-radius(3px);
     margin-left: 20px;
+
+    a {
+        padding: rhythm(.5) 20px;
+        display: block;
+    }
 }
 
 nav ul {
     list-style-type: none;
     padding-left: 0;
-    margin: 0;
+    margin: rhythm(-.5) 0 0 0;
     
     li {
         display: inline-block;
         margin-right: 20px;
+        position: relative;
     }
     
     ul {
         display: none;
+        position: absolute;
+        width: 200px;
+        z-index: 10;
+        top: rhythm(2.5);
+        right: 0;
+        background-color: darken($teal, 15%);
+        
+        li { 
+            margin-right: 0; 
+            width: 100%;
+            text-shadow: none;
+            text-transform: none;
+        }
+    }
+    
+    li:hover ul { display: block; }
+    
+    li:hover {
+        background-color: darken($teal, 15%);
+        text-shadow: none;
+        
+        li:hover {
+            background-color: rgba(0,0,0,.15);
+        }
     }
 }
 
@@ -160,6 +190,8 @@ div[role=main] {
     padding: rhythm(.5) gutter(6);
     display: inline-block;
     @include border-radius(5px);
+    background-color: $teal;
+    text-align: center;
 }
 
 //* @end */
@@ -234,6 +266,7 @@ div[role=main] {
         font-size: 0;
         @include leader();
     }
+
     .hentry {
         font-color: #363636;
         background-color: #fff;
@@ -253,8 +286,32 @@ div[role=main] {
         &:nth-of-type(3n) {
             margin-right: 0;
         }
+
+        p.items, p.members {
+            position: absolute;
+            bottom: 0;
+            display: inline-block;
+            margin: 0;
+            padding: rhythm(.5) 10px;
+            width: 50%;
+            border-top: 1px solid #e7e7e7;
+        }
+        
+        p.items {
+            left: 0;
+        }
+        
+        p.members {
+            left: 50%;
+            border-left: 1px solid #e7e7e7;
+        }
+        
+        .number {
+            font-size: 2 * $base-font-size;      
+            display: block;
+        }
     }
-    
+
     .groups-tags ul {
         padding-left: 0;
         list-style-type: none;
@@ -296,11 +353,51 @@ div[role=main] {
         padding: 0 10px rhythm(.5);
     }
     
-    .count {
+    .number {
         font-size: 2 * $base-font-size;
         display: block;
     }
 }
+
+.group-meta {
+    @include span-columns(3 alpha);
+    
+    .groups-button {
+        @extend .button;
+        width: 100%;
+        display: block;
+        @include trailer();
+    }
+    
+    .logo {
+        background-color: #ccc;
+        width: 100%;
+        padding-bottom: 100%;
+        @include trailer();
+    }
+    
+    p.items, p.members {
+        display: block;
+        margin: 0;
+        width: 50%;
+        float: left;
+        @include trailer();
+    }
+    
+    p.members {
+        left: 50%;
+        padding-left: 10px;
+    }
+    
+    p.items { padding-left: 0; }
+    
+    .number {
+        font-size: 2 * $base-font-size;      
+        display: block;
+    }    
+    
+}
+
 
 //* @end */
 
@@ -318,6 +415,41 @@ div[role=main] {
     
     #sidebar {
         @include span-columns(4 alpha);
+        @include span-columns(3 alpha);
+        
+        .groups-button {
+            @extend .button;
+            width: 100%;
+            display: block;
+            @include trailer();
+        }
+        
+        .logo {
+            background-color: #ccc;
+            width: 100%;
+            padding-bottom: 100%;
+            @include trailer();
+        }
+        
+        p.items, p.members {
+            display: block;
+            margin: 0;
+            width: 50%;
+            float: left;
+            @include trailer();
+        }
+        
+        p.members {
+            left: 50%;
+            padding-left: 10px;
+        }
+        
+        p.items { padding-left: 0; }
+        
+        .number {
+            font-size: 2 * $base-font-size;      
+            display: block;
+        } 
     }
     
     #primary {
