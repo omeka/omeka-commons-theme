@@ -28,7 +28,8 @@
     
 </head>
 
-<?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
+<?php $user = (current_user()) ? ' loggedin': ' loggedout'; ?>
+<?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass . $user)); ?>
 
 <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
 

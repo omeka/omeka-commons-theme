@@ -27,12 +27,26 @@ body {
 
 a {
     text-decoration: none;
-    color: #ffcc00;
+    color: $yellow;
     
-    &:hover, &:active { color: #ffdb79; }
+    &:hover, &:active { color: lighten($yellow, 20%); }
 }
 
-fieldset { border: 0; }
+button, input[type="submit"], .button { 
+    padding: rhythm(.5) gutter(6);
+    display: inline-block;
+    @include border-radius(5px);
+    background-color: $teal;
+    text-align: center;
+    border: 0;
+    color: #fff;
+}
+
+fieldset { 
+    border: 0; 
+    padding: 0;
+    margin: 0;
+}
 
 //* @group ------ Header ------ */
 
@@ -86,6 +100,8 @@ header {
         float: left;
         background-color: $teal;
         color: #fff;
+        @include border-radius(0px);
+        line-height: .5 * $base-line-height;
     }
 }
 
@@ -186,12 +202,19 @@ div[role=main] {
     @include container;
 }
 
-.button {
-    padding: rhythm(.5) gutter(6);
-    display: inline-block;
-    @include border-radius(5px);
-    background-color: $teal;
-    text-align: center;
+#flash {
+    background-color: lighten($red, 30%);
+    @include border-radius(3px);
+    color: darken($red, 20%);
+    text-shadow: none;
+    padding: rhythm(.25) gutter(12);
+    @include trailer();
+    
+    ul, li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 //* @end */
@@ -313,6 +336,14 @@ div[role=main] {
     .more-info { background-color: darken($red, 20%); }
 }
 
+.groups-type {
+    @include border-radius(3px);
+    padding: rhythm(.25) 10px;
+    @include trailer();
+    position: relative;
+    text-shadow: none;
+}
+
 .groups.browse {
     h3 {
         display: none;
@@ -323,13 +354,6 @@ div[role=main] {
         @include leader();
     }
     
-    .groups-type {
-        @include border-radius(3px);
-        padding: rhythm(.25) 10px;
-        @include trailer();
-        position: relative;
-    }
-
     .hentry {
         font-color: #363636;
         background-color: #fff;
@@ -431,6 +455,15 @@ div[role=main] {
     }
 }
 
+.loggedout.groups.browse p.items,
+.loggedout.groups.browse p.members, {
+    bottom: 0;
+}
+
+.loggedout.groups.browse .hentry {
+    height: rhythm(15);
+}
+
 .groups-button {
     @extend .button;
     width: 100%;
@@ -490,6 +523,50 @@ div[role=main] {
     
     #primary {
         @include span-columns(8 omega);
+        
+        & > *:first-child {
+            margin-top: 0;
+        }
+    }
+    
+    .groups-item {
+        @include span-columns(6 alpha);
+        height: rhythm(17);
+        @include trailer();
+        background-color: #fff;
+        clear: none;
+        text-shadow: none;
+        color: #696969;
+        
+        a {
+            color: darken($red, 10%);
+            
+            &:hover { color: $red; }
+        }
+        
+        &:nth-of-type(2n) {
+            @include span-columns(6 omega);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        > * {
+            padding: 0 gutter();
+        }
+    }
+    
+    .image {
+        height: rhythm(7);
+        background-size: cover;
+        background-position: center center;
+        background-color: #ccc;
+    }
+    
+    .view-all-items-link {
+        clear: both;
     }
 }
 
@@ -510,6 +587,31 @@ div[role=main] {
     
     &:nth-of-type(3n) {
         @include span-columns(4 omega);
+    }
+}
+
+//* @end */
+
+//* @group ------ Login ------ */
+
+#login-form {
+    padding: 0;
+    @include span-columns(8 alpha);
+    @include trailer();
+    
+    .field { @include trailer(); }
+    
+    #username-label, #password-label { @include trailer(.5); }
+    
+    #remember-label, #remember-label + div {
+        display: inline;
+    }
+    
+    input[type=text], input[type=password] {
+        width: 100%;
+        border: 0;
+        height: 1.5 * $base-line-height;
+        padding: rhythm(.25) gutter(10);
     }
 }
 
