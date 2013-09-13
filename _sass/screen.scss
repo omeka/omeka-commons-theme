@@ -257,6 +257,62 @@ div[role=main] {
 
 //* @group ------ Groups/Browse ------ */
 
+.more-info {
+    font-size: .625 * $base-font-size;
+    height: .625 * $base-line-height;
+    line-height: .75 * $base-line-height;
+    @include border-radius(20px);
+    display: inline-block;
+    margin-left: 10px;
+    width: .625 * $base-line-height;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    
+    &:hover + .visibility-description {
+        display: block;
+    }
+}
+
+.visibility-description {
+    display: none;
+    position: absolute;
+    top: rhythm(3);
+    left: 0;
+    background-color: #e7e7e7;
+    @include border-radius(5px);
+    font-size: .75 * $base-font-size;
+    width: 100%;
+    padding: 5px 10px;
+    color: #696969;
+    font-weight: bold;
+    
+    &:before {
+        position: absolute;
+        top: rhythm(-.5);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 20px solid #e7e7e7;
+        content: "";
+    }
+}
+
+.public {
+    background-color: #e7e7e7;
+    color: #666;
+    
+    .more-info { background-color: #999; }
+}
+
+.closed {
+    background-color: lighten($red, 30%);
+    color: darken($red, 20%);
+
+    .more-info { background-color: darken($red, 20%); }
+}
+
 .groups.browse {
     h3 {
         display: none;
@@ -265,6 +321,13 @@ div[role=main] {
     .groups {
         font-size: 0;
         @include leader();
+    }
+    
+    .groups-type {
+        @include border-radius(3px);
+        padding: rhythm(.25) 10px;
+        @include trailer();
+        position: relative;
     }
 
     .hentry {
@@ -279,9 +342,10 @@ div[role=main] {
         font-size: $base-font-size;
         line-height: $base-line-height;
         vertical-align: top;
-        @include padding-trailer(4);
+        @include padding-trailer(6);
         @include trailer();
         position: relative;
+        height: rhythm(17);
         
         &:nth-of-type(3n) {
             margin-right: 0;
@@ -289,7 +353,7 @@ div[role=main] {
 
         p.items, p.members {
             position: absolute;
-            bottom: 0;
+            bottom: rhythm(2);
             display: inline-block;
             margin: 0;
             padding: rhythm(.5) 10px;
@@ -309,6 +373,14 @@ div[role=main] {
         .number {
             font-size: 2 * $base-font-size;      
             display: block;
+        }
+        
+        .groups-button {
+            margin-bottom: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            @include border-radius(0px);
         }
     }
 
@@ -359,45 +431,12 @@ div[role=main] {
     }
 }
 
-.group-meta {
-    @include span-columns(3 alpha);
-    
-    .groups-button {
-        @extend .button;
-        width: 100%;
-        display: block;
-        @include trailer();
-    }
-    
-    .logo {
-        background-color: #ccc;
-        width: 100%;
-        padding-bottom: 100%;
-        @include trailer();
-    }
-    
-    p.items, p.members {
-        display: block;
-        margin: 0;
-        width: 50%;
-        float: left;
-        @include trailer();
-    }
-    
-    p.members {
-        left: 50%;
-        padding-left: 10px;
-    }
-    
-    p.items { padding-left: 0; }
-    
-    .number {
-        font-size: 2 * $base-font-size;      
-        display: block;
-    }    
-    
+.groups-button {
+    @extend .button;
+    width: 100%;
+    display: block;
+    color: #fff;
 }
-
 
 //* @end */
 
@@ -418,9 +457,6 @@ div[role=main] {
         @include span-columns(3 alpha);
         
         .groups-button {
-            @extend .button;
-            width: 100%;
-            display: block;
             @include trailer();
         }
         
