@@ -40,14 +40,13 @@
             <nav>
                 <?php echo public_nav_main(); ?>
             </nav>
+            <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
+            
+            <?php if (@$bodyid !== 'home'): ?>
+            <?php echo search_form(); ?>
+            <?php endif; ?>
 
         </div>
-        
-        <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-        
-        <?php if (@$bodyid !== 'home'): ?>
-        <?php echo search_form(); ?>
-        <?php endif; ?>
     </header>
     
     <div role="main">
