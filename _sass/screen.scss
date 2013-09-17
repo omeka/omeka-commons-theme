@@ -75,12 +75,12 @@ header {
 }
 
 #search-form {
-    @include container;
-    @include leader();
+    @include leader(2);
     background-color: rgba(255,255,255,.05);
     @include border-radius(10px);
-    padding: rhythm(1) gutter(12);
+    padding: rhythm(1);
     opacity: .75;
+    overflow: auto;
     
     &:hover, &:active {
         opacity: 1;
@@ -91,6 +91,7 @@ header {
         height: rhythm(1.5);
         width: 75%;
         float: left;
+        margin: 0;
     }
     
     input[type=submit] {
@@ -129,37 +130,41 @@ header nav {
         padding: rhythm(.5) 20px;
         display: block;
     }
-}
-
-nav ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin: rhythm(-.5) 0 0 0;
-    
-    li {
-        display: inline-block;
-        margin-right: 20px;
-        position: relative;
-    }
     
     ul {
-        display: none;
-        position: absolute;
-        width: 200px;
-        z-index: 10;
-        top: rhythm(2.5);
-        right: 0;
-        background-color: darken($teal, 15%);
+        margin: rhythm(-.5) 0 0 0;
         
-        li { 
-            margin-right: 0; 
-            width: 100%;
-            text-shadow: none;
-            text-transform: none;
+        ul {
+            display: none;
+            position: absolute;
+            width: 200px;
+            z-index: 10;
+            top: rhythm(2.5);
+            right: 0;
+            background-color: darken($teal, 15%);
+            
+            li { 
+                margin-right: 0; 
+                width: 100%;
+                text-shadow: none;
+                text-transform: none;
+                position: relative;
+            }
+            
+            ul { display: none; }
         }
     }
-    
-    li:hover ul { display: block; }
+
+    li:hover > ul { 
+        display: block; 
+        
+        li:hover ul {
+            position: absolute;
+            top: 0;
+            right: 200px;
+            margin: 0;
+        }
+    }
     
     li:hover {
         background-color: darken($teal, 15%);
@@ -171,11 +176,24 @@ nav ul {
     }
 }
 
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    
+    li {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+        
+        &:last-of-type { margin-right: 0; }
+    }
+}
+
 .pagination {
     padding-left: 0;
     list-style-type: none;
     font-size: 0;
-    
+
     li { 
         display: inline-block; 
         height: rhythm(2);
@@ -183,7 +201,7 @@ nav ul {
         line-height: 2 * $base-line-height;
         padding-right: 20px;
     }
-    
+
     input[type=text] {
         width: 3em;
         background-color: transparent;
@@ -193,6 +211,8 @@ nav ul {
         text-align: center;
     }
 }
+
+#bottom-nav ul ul { display: none; }
 
 //* @end */
 
@@ -279,6 +299,8 @@ div[role=main] {
 //* @end */
 
 //* @group ------ Groups/Browse ------ */
+
+.groups-section-nav { display: none; }
 
 .more-info {
     font-size: .625 * $base-font-size;
@@ -476,6 +498,7 @@ div[role=main] {
 //* @group ------ Groups/Show ------ */
 
 .groups.show {
+
     .groups-members {
         padding-left: 0;
 
@@ -485,12 +508,22 @@ div[role=main] {
         }
     }
     
+    #sidebar, #primary {
+        @include leader();
+    }
+    
     #sidebar {
         @include span-columns(4 alpha);
         @include span-columns(3 alpha);
         
         .groups-button {
+            padding: rhythm(.25) 10px;
+            margin-top: 0;
             @include trailer();
+            height: rhythm(1.5);
+            text-align: left;
+            @include border-radius(3px);
+            @include text-shadow(none);
         }
         
         .logo {
@@ -524,8 +557,14 @@ div[role=main] {
     #primary {
         @include span-columns(8 omega);
         
-        & > *:first-child {
-            margin-top: 0;
+        h2 { margin-top: 0; }
+        
+        & > div {
+            @include trailer(2);
+            
+            &:last-of-type {
+                @include trailer(0);
+            }
         }
     }
     
@@ -569,6 +608,49 @@ div[role=main] {
         clear: both;
     }
 }
+
+//* @end */
+
+//* @group ------ Groups Settings ------ */
+
+.group-manage {
+    background: rgba(0,0,0,.25);
+    padding: rhythm(.25) 10px;
+    @include border-radius(3px);
+    
+    ul { margin: 0; }
+}
+
+.group-options > div:last-of-type {
+    margin-bottom: 0;
+}
+
+div.groups-group {
+    @include leader();
+    border-color: rgba(255,255,255,.15);
+    @include leading-border(1px, 0, $base-font-size, solid);
+    overflow: auto;
+    
+    &:last-of-type {
+        @include trailing-border(1px, 1, $base-font-size, solid);
+        @include trailer();
+    }
+}
+
+.my-groups #primary {
+    @include leader(2);
+}
+
+.group-status {
+    @include span-columns(6 alpha);
+    
+    p { margin: 0; }
+}
+
+.group-notifications {
+    @include span-columns(6 omega);
+}
+
 
 //* @end */
 
