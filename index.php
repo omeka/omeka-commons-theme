@@ -10,34 +10,21 @@
 <p><?php echo get_theme_option('Homepage Text'); ?></p>
 <?php endif; ?>
 
-<?php if (get_theme_option('Display Featured Item') !== '0'): ?>
-<!-- Featured Item -->
-<div id="featured-item">
-    <h2><?php echo __('Featured Item'); ?></h2>
-    <?php echo random_featured_items(1); ?>
-</div><!--end featured-item-->
-<?php endif; ?>
+<div id="stats">
+    
+    <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
+    
+    <div class="sites"><span class="counter"><?php echo total_records('sites'); ?></span> sites</div>
+    
+    <span class="add-site-link"><a href="#" class="button">Add your site</a></span>
 
-<?php if (get_theme_option('Display Featured Collection') !== '0'): ?>
-<!-- Featured Collection -->
-<div id="featured-collection">
-    <h2><?php echo __('Featured Collection'); ?></h2>
-    <?php echo random_featured_collection(); ?>
-</div><!-- end featured collection -->
-<?php endif; ?>
-
-<?php if ((get_theme_option('Display Featured Exhibit') !== '0')
-        && plugin_is_active('ExhibitBuilder')
-        && function_exists('exhibit_builder_display_random_featured_exhibit')): ?>
-<!-- Featured Exhibit -->
-<?php echo exhibit_builder_display_random_featured_exhibit(); ?>
-<?php endif; ?>
+</div>
 
 <div id="recent-items">
-    <h2><?php echo __('Recently Added Items'); ?></h2>
+    <h2><?php echo __('Items recently uploaded to the Omeka Commons'); ?></h2>
 
     <?php
-    $homepageRecentItems = (int)get_theme_option('Homepage Recent Items') ? get_theme_option('Homepage Recent Items') : '3';
+    $homepageRecentItems = (int)get_theme_option('Homepage Recent Items') ? get_theme_option('Homepage Recent Items') : '9';
     set_loop_records('items', get_recent_items($homepageRecentItems));
     if (has_loop_records('items')):
     ?>
@@ -45,18 +32,24 @@
     <div class="items-list">
         <?php foreach (loop('items') as $item): ?>
         <div class="item">
+            <?php $item_files = $item->getFiles(); ?>
+            <?php foreach ($item_files as $item_file): ?>
+                <?php $stop = 0; ?>
+                <?php if ($item_file->has_derivative_image == 1): ?>
+                    <div class="image" style="background-image: url('<?php echo file_display_url($item_file); ?>')"></div>
+                    <?php $stop = 1; ?>
+                <?php endif; ?>
+                <?php if ($stop == 1) { break; } ?>
+            <?php endforeach; ?>
+            <?php if (count($item_files) < 1): ?>
+                <div class="no image"></div>
+            <?php endif; ?>
 
             <h3><?php echo link_to_item(); ?></h3>
 
-            <?php if (metadata('item', 'has thumbnail')): ?>
-            <div class="item-img">
-                <?php echo link_to_item(item_image('square_thumbnail')); ?>
-            </div>
-            <?php endif; ?>
-
             <?php if($desc = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>150))): ?>
 
-            <div class="item-description"><?php echo $desc; ?><?php echo link_to_item('see more',(array('class'=>'show'))) ?></div>
+            <div class="item-description"><?php echo $desc; ?></div>
 
             <?php endif; ?>
 
@@ -70,7 +63,7 @@
 
     <?php endif; ?>
 
-    <p class="view-items-link"><a href="<?php echo html_escape(url('items')); ?>"><?php echo __('View All Items'); ?></a></p>
+    <p><a class="view-items-link button" href="<?php echo html_escape(url('items')); ?>"><?php echo __('View All Items'); ?></a></p>
 
 </div><!--end recent-items -->
 

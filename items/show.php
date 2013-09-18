@@ -18,6 +18,8 @@
     </nav>
 </div>
 
+<div id="primary">
+
 <?php echo all_element_texts('item'); ?>
 
 <!-- If the item belongs to a collection, the following creates a link to that collection. -->
@@ -48,5 +50,7 @@
 </div>
 
 <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
+
+</div>
 
 <?php echo foot(); ?>
