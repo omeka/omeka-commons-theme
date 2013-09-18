@@ -48,6 +48,10 @@ fieldset {
     margin: 0;
 }
 
+textarea {
+    display: block;
+}
+
 //* @group ------ Header ------ */
 
 header {
@@ -75,7 +79,7 @@ header {
 }
 
 #search-form {
-    @include leader(2);
+    @include leader();
     background-color: rgba(255,255,255,.05);
     @include border-radius(10px);
     padding: rhythm(1);
@@ -222,18 +226,24 @@ div[role=main] {
     @include container;
 }
 
-#flash {
+#flash ul {
+    margin: 0;
+    padding: 0;
+}
+
+#flash li {
+    margin: 0;
     background-color: lighten($red, 30%);
     @include border-radius(3px);
     color: darken($red, 20%);
     text-shadow: none;
     padding: rhythm(.25) gutter(12);
-    @include trailer();
+    @include trailer();    
+    list-style-type: none;
     
-    ul, li {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+    &.success {
+        background-color: lighten($teal, 35%);
+        color: darken($teal, 20%);
     }
 }
 
@@ -264,6 +274,101 @@ div[role=main] {
     float: left;
 }
 
+#home .item {
+    font-color: #363636;
+    background-color: #fff;
+    color: #696969;
+    text-shadow: none;
+    display: inline-block;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    vertical-align: top;
+    @include padding-trailer(6);
+    @include trailer();
+    position: relative;
+    height: rhythm(17);
+    @include span-columns(4);
+    
+    &:nth-of-type(3n) {
+        @include span-columns(4 omega);
+    }
+    
+    &:first-of-type, &:nth-of-type(3n+1) {
+        @include span-columns(4 alpha);
+    }
+    
+    & > * {
+        margin-left: gutter(6);
+        margin-right: gutter(6);
+    }
+}
+
+#home .view-items-link {
+    background-color: rgba(0,0,0,.15);
+    width: 100%;
+    color: $yellow;
+}
+
+#home .image {
+    height: rhythm(7);
+    background-size: cover;
+    background-position: center center;
+    background-color: #ccc;
+    margin: 0;
+    position: relative;
+}
+
+#home .no.image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: .35;
+    background-color: red;
+    background: #ccc url('../images/grayscale_mark.png') no-repeat center center;
+    background-size: 50%;
+}
+
+#home #recent-items {
+    @include leader(2);
+    border-color: rgba(255,255,255,.15);
+    @include leading-border(1px, 1, $base-font-size, solid);
+    @include trailer(2);
+    clear: both;
+}
+
+#stats {
+    @include span-columns(4 omega);
+    @include leader(3);
+    @include trailer(2);
+    text-align: right;
+    
+    a { 
+        width: 100%; 
+        display: inline-block;
+    }
+    
+    div {
+        @include trailer();
+    }
+}
+
+.counter {
+    font-size: 2 * $base-font-size;
+    line-height: 2 * $base-line-height;
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    text-shadow: 0;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    color: #696969;
+    text-shadow: none;
+    letter-spacing: .1em;
+    @include trailer(.25);
+}
+
 //* @end */
 
 //* @group ------ Items/Browse ------ */
@@ -281,10 +386,10 @@ div[role=main] {
 //* @group ------ Items/Show ------ */
 
 .items.show { 
-    div[role="main"] > * {
+    #primary {
         @include span-columns(8 omega);
     }
-    
+        
     div[role="main"] > h1 {
         width: 100%;
         padding: 0;
@@ -641,6 +746,10 @@ div.groups-group {
     @include leader(2);
 }
 
+.my-groups .role {
+    font-weight: 700;
+}
+
 .group-status {
     @include span-columns(6 alpha);
     
@@ -651,6 +760,19 @@ div.groups-group {
     @include span-columns(6 omega);
 }
 
+.group-membership p:only-of-type {
+    margin-bottom: 0;
+}
+
+.invitations label {
+    display: block;
+    @include trailer(.5);
+}
+
+.invitations .groups,
+.invitations textarea {
+    @include trailer();
+} 
 
 //* @end */
 
