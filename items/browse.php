@@ -1,6 +1,7 @@
 <?php
+queue_js_file('items');
 $pageTitle = __('Browse Items');
-echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse'));
+echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse grid'));
 ?>
 
 <h1><?php echo $pageTitle;?> <?php echo __('(%s total)', $total_results); ?></h1>
@@ -9,15 +10,29 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse'));
 
 <?php echo pagination_links(); ?>
 
+<div class="views">
+    <span class="grid">Grid view</span>
+    <span class="list">List view</span>
+</div>
+
+<div class="items">
 <?php foreach (loop('items') as $item): ?>
 <div class="item hentry">
+    <?php $item_files = $item->getFiles(); ?>
+    <?php foreach ($item_files as $item_file): ?>
+        <?php $stop = 0; ?>
+        <?php if ($item_file->has_derivative_image == 1): ?>
+            <div class="image" style="background-image: url('<?php echo file_display_url($item_file); ?>')"></div>
+            <?php $stop = 1; ?>
+        <?php endif; ?>
+        <?php if ($stop == 1) { break; } ?>
+    <?php endforeach; ?>
+    <?php if (count($item_files) < 1): ?>
+        <div class="no image"></div>
+    <?php endif; ?>
+
     <h2><?php echo link_to_item(metadata('item', array('Dublin Core', 'Title')), array('class'=>'permalink')); ?></h2>
     <div class="item-meta">
-    <?php if (metadata('item', 'has thumbnail')): ?>
-    <div class="item-img">
-        <?php echo link_to_item(item_image('square_thumbnail')); ?>
-    </div>
-    <?php endif; ?>
 
     <?php if ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
     <div class="item-description">
@@ -36,6 +51,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse'));
     </div><!-- end class="item-meta" -->
 </div><!-- end class="item hentry" -->
 <?php endforeach; ?>
+</div>
 
 <?php echo pagination_links(); ?>
 

@@ -45,7 +45,7 @@
                 <div class="no image"></div>
             <?php endif; ?>
 
-            <h3><?php echo link_to_item(); ?></h3>
+            <h2><?php echo link_to_item(); ?></h2>
 
             <?php if($desc = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>150))): ?>
 

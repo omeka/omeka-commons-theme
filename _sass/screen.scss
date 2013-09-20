@@ -23,6 +23,7 @@ body {
     text-shadow: 0 0 10px rgba(0,0,0,.7);
     font-size: $base-font-size;
     line-height: $base-line-height;
+    word-break: break-word;
 }
 
 a {
@@ -79,7 +80,7 @@ header {
 }
 
 #search-form {
-    @include leader();
+    @include leader(2);
     background-color: rgba(255,255,255,.05);
     @include border-radius(10px);
     padding: rhythm(1);
@@ -247,6 +248,11 @@ div[role=main] {
     }
 }
 
+.number {
+    font-size: 2 * $base-font-size;      
+    display: block;
+}
+
 //* @end */
 
 //* @group ------ Home ------ */
@@ -272,6 +278,7 @@ div[role=main] {
     width: 100%;
     padding: rhythm(1) gutter(6);
     float: left;
+    @include leader();
 }
 
 #home .item {
@@ -289,6 +296,12 @@ div[role=main] {
     height: rhythm(17);
     @include span-columns(4);
     
+    h2 {
+        font-weight: normal;
+        margin: 0 gutter(6);
+        padding: rhythm(.5) 0;
+    }
+    
     &:nth-of-type(3n) {
         @include span-columns(4 omega);
     }
@@ -300,6 +313,18 @@ div[role=main] {
     & > * {
         margin-left: gutter(6);
         margin-right: gutter(6);
+    }
+
+    a:link {
+        color: $yellow-on-white;
+    }
+    
+    a:visited {
+        color: desaturate($yellow-on-white, 40%);
+    }
+    
+    a:active, a:hover {
+        color: lighten($yellow-on-white, 10%);
     }
 }
 
@@ -373,12 +398,91 @@ div[role=main] {
 
 //* @group ------ Items/Browse ------ */
 
-.items.browse {
+.items.browse.list {
     .item {
         @include trailing-border(1px, 2, $base-font-size, solid);
         border-color: rgba(255,255,255,.15);
         @include trailer(2);
+        clear: both;
     }
+}
+
+.items.browse.grid {
+    h2 {
+        font-weight: normal;
+        margin: 0;
+        padding: rhythm(.5) 0;
+    }
+
+    .item {
+        @include span-columns(4);
+        font-color: #363636;
+        background-color: #fff;
+        color: #696969;
+        text-shadow: none;
+        padding: rhythm(7) gutter(12) rhythm(.5);
+        display: inline-block;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+        vertical-align: top;
+        @include padding-trailer(6);
+        @include trailer();
+        position: relative;
+        height: rhythm(17);
+
+        &:nth-of-type(3n) {
+            @include span-columns(4 omega);
+        }
+
+        a:link {
+            color: $yellow-on-white;
+        }
+        
+        a:visited {
+            color: desaturate($yellow-on-white, 40%);
+        }
+        
+        a:active, a:hover {
+            color: lighten($yellow-on-white, 10%);
+        }
+    }
+    
+    .views + .item {
+        clear: both;
+    }
+    
+    .image {
+        height: rhythm(7);
+        background-size: cover;
+        background-position: center center;
+        background-color: #ccc;
+    }
+    
+    .image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+    
+    .no.image:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: .35;
+        background-color: red;
+        background: #ccc url('../images/grayscale_mark.png') no-repeat center center;
+        background-size: 50%;
+    }
+}
+
+.items.browse .items {
+    float: left;
+    @include leader();
 }
 
 //* @end */
@@ -465,6 +569,7 @@ div[role=main] {
 
 .groups-type {
     @include border-radius(3px);
+    @include leader(.5);
     padding: rhythm(.25) 10px;
     @include trailer();
     position: relative;
@@ -472,6 +577,16 @@ div[role=main] {
 }
 
 .groups.browse {
+    h2 {
+        font-weight: normal;
+        margin: 0;
+        padding: rhythm(.25) 0;
+    }
+    
+    .groups-description {
+        @include leader();
+    }
+
     h3 {
         display: none;
     }
@@ -498,6 +613,18 @@ div[role=main] {
         position: relative;
         height: rhythm(17);
         
+        a:link {
+            color: $yellow-on-white;
+        }
+        
+        a:visited {
+            color: desaturate($yellow-on-white, 40%);
+        }
+        
+        a:active, a:hover {
+            color: lighten($yellow-on-white, 10%);
+        }
+        
         &:nth-of-type(3n) {
             margin-right: 0;
         }
@@ -519,11 +646,6 @@ div[role=main] {
         p.members {
             left: 50%;
             border-left: 1px solid #e7e7e7;
-        }
-        
-        .number {
-            font-size: 2 * $base-font-size;      
-            display: block;
         }
         
         .groups-button {
@@ -782,8 +904,9 @@ div.groups-group {
     background-color: #fff;
     color: #696969;
     text-shadow: none;
-    padding: rhythm(.5) gutter(12);
+    padding: rhythm(.5) gutter(12) rhythm(4);
     @include span-columns(4);
+    @include trailer();
     
     &:first-of-type, &:nth-of-type(3n+1) {
         @include span-columns(4 alpha);
@@ -792,6 +915,41 @@ div.groups-group {
     &:nth-of-type(3n) {
         @include span-columns(4 omega);
     }
+    
+    position: relative;
+}
+
+.sites p.items {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: inline-block;
+    margin: 0;
+    padding: rhythm(.5) gutter(4);
+    width: 100%;
+    border-top: 1px solid #e7e7e7;
+}
+
+.pagination {
+    float: left;
+    @include trailer();
+    width: 50%;
+    clear: both;
+}
+
+.views {
+    float: right;
+    width: 50%;
+    text-align: right;
+    padding: rhythm(.5) 0;
+}
+
+#outputs {
+    clear: both;
+}
+
+.list {
+    margin-left: 20px;
 }
 
 //* @end */
