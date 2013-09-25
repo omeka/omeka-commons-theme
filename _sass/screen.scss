@@ -364,8 +364,29 @@ div[role=main] {
     clear: both;
 }
 
+#featured-site {
+    @include span-columns(9 alpha);
+    @include leader(3);
+    
+    h2 { margin-top: 0; }
+    
+    .placeholder {
+        width: 60%;
+        float: left;
+        height: rhythm(10);
+        margin-right: gutter(6);
+    }
+}
+
+#home .category {
+    text-transform: uppercase;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    display: block;
+}
+
 #stats {
-    @include span-columns(4 omega);
+    @include span-columns(3 omega);
     @include leader(3);
     @include trailer(2);
     text-align: right;
