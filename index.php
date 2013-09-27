@@ -10,13 +10,13 @@
 <p><?php echo get_theme_option('Homepage Text'); ?></p>
 <?php endif; ?>
 
-
+<?php if($featuredSite = get_random_featured_site()): ?>
 <div id="featured-site">
     <div class="placeholder image"></div>
-    <?php $featuredSite = get_random_featured_site(); ?>
     <h2><span class="category">Featured Site</span> <?php echo metadata($featuredSite, 'Title'); ?></h2>  
     <?php echo metadata($featuredSite, 'Description'); ?>
 </div>
+<?php endif; ?>
 
 <div id="stats">
     
