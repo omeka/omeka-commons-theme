@@ -281,7 +281,7 @@ div[role=main] {
     @include leader();
 }
 
-#home .item {
+.items-list.with-images .item {
     font-color: #363636;
     background-color: #fff;
     color: #696969;
@@ -334,16 +334,17 @@ div[role=main] {
     color: $yellow;
 }
 
-#home .image {
+.items-list .item > .image {
     height: rhythm(7);
     background-size: cover;
     background-position: center center;
     background-color: #ccc;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
     position: relative;
 }
 
-#home .no.image:after {
+.no.image:after {
     content: "";
     position: absolute;
     top: 0;
@@ -758,6 +759,11 @@ div[role=main] {
     
     #sidebar, #primary {
         @include leader();
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     }
     
     #sidebar {
@@ -816,7 +822,7 @@ div[role=main] {
         }
     }
     
-    .groups-item {
+    .group.item {
         @include span-columns(6 alpha);
         height: rhythm(17);
         @include trailer();
@@ -925,7 +931,7 @@ div.groups-group {
     background-color: #fff;
     color: #696969;
     text-shadow: none;
-    padding: rhythm(.5) gutter(12) rhythm(4);
+    padding: rhythm(.5) gutter(12) rhythm(3);
     @include span-columns(4);
     @include trailer();
     
@@ -938,6 +944,12 @@ div.groups-group {
     }
     
     position: relative;
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        @include trailer();
+    }
 }
 
 .sites p.items {
@@ -971,6 +983,13 @@ div.groups-group {
 
 .list {
     margin-left: 20px;
+}
+
+//* @end */
+
+//* @group ------ Sites/show ------ */
+
+.sites.display-case {
 }
 
 //* @end */

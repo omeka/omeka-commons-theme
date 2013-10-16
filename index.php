@@ -37,7 +37,7 @@
     if (has_loop_records('items')):
     ?>
 
-    <div class="items-list">
+    <div class="items-list with-images">
         <?php foreach (loop('items') as $item): ?>
         <div class="item">
             <?php $item_files = $item->getFiles(); ?>
