@@ -4,12 +4,26 @@
 @import "base";
 @import "compass/css3";
 
-/* -------------------------------------------------------------------------*/
-/* Layout */
+/*
+Table of Contents
+=================
+-- Generic HTML Elements
+-- Header
+-- Footer
+-- Navigation
+-- Global Selectors
+-- Home
+-- Items/Browse
+-- Items/Show
+-- Groups/Browse
+-- Groups/Show
+-- Groups Settings
+-- Sites
+-- Sites/Show
+-- Login
+*/
 
-.container {
-  @include container;
-}
+/* @group ------ Generic HTML Elements ------ */
 
 * {
     @include box-sizing(border-box);
@@ -53,7 +67,13 @@ textarea {
     display: block;
 }
 
-//* @group ------ Header ------ */
+input[type=text] {
+    padding: rhythm(.25) 10px;
+}
+
+/* @end */
+
+/* @group ------ Header ------ */
 
 header {
     padding: rhythm(2) 0 rhythm(1);
@@ -79,13 +99,40 @@ header {
     @include leader();
 }
 
-#search-form {
+.tab {
+    @include border-radius(5px 5px 0 0);
+    padding: rhythm(.5) gutter(12);
+    cursor: pointer;
+    width: 50%;
+    float: left;
+    text-align: left;
+    background-color: rgba(255,255,255,.15);
+}
+
+.current.tab {
+    background-color: rgba(255,255,255,.3);
+}
+
+#search-form, #items-form {
+    background-color: rgba(255,255,255, .3);
+    padding: rhythm(.5) gutter(12);
+    width: 100%;
+    float: left;
+    text-align: left;
+    @include border-radius(0 0 5px 5px);
+}
+
+#search {
     @include leader(2);
-    background-color: rgba(255,255,255,.05);
-    @include border-radius(10px);
-    padding: rhythm(1);
-    opacity: .75;
+    opacity: .65;
     overflow: auto;
+    @include transition-property(opacity);
+    @include transition-duration(.25s);
+    @include transition-timing-function(ease-in);
+    
+    .items {
+        margin-top: 0;
+    }
     
     &:hover, &:active {
         opacity: 1;
@@ -94,12 +141,13 @@ header {
     input[type=text] {
         border: 0;
         height: rhythm(1.5);
-        width: 75%;
+        width: 50%;
         float: left;
         margin: 0;
     }
     
-    input[type=submit] {
+    #search-form input[type=submit],
+    #search-form .button {
         border: 0;
         height: rhythm(1.5);
         width: 25%;
@@ -108,20 +156,112 @@ header {
         color: #fff;
         @include border-radius(0px);
         line-height: .5 * $base-line-height;
+        text-shadow: none;
+        clear: none;
+    }
+    
+    #search-form .button {
+        background-color: darken(saturate($teal, 15%), 15%);
+    }
+    
+    #advanced-form {
+        display: none;
+        text-align: left;
+        @include padding-leader(.5);
+    }
+    
+    input[type=radio] {
+        margin-right: 5px;
+    }
+    
+}
+
+#advanced-form {
+    & > fieldset { 
+        width: 50%; 
+        float: left;
+        clear: none;
     }
 }
 
-//* @end */
+#items-form {
+    display: none;
+    line-height: $base-line-height;
+    
+    .field {
+        text-align: right;
+        @include trailer();
+        overflow: auto;
+    }
+    
+    label, .label {
+        width: 36%;
+        float: left;
+        text-align: right;
+        @include padding-leader(.5);
+    }
 
-//* @group ------ Footer ------ */
+    .inputs {
+        width: 60%;
+        float: right;
+        text-align: left;
+    }
+
+    .search-entry {
+        select {
+            width: 50%;
+        }
+        
+        & + .search-entry {
+            @include leader();
+        }
+    }
+    
+    input[type=text] {
+        width: 100%;
+        margin-top: rhythm(.25)
+    }
+    
+    .add_search {
+        margin-right: 4%;
+    }
+    
+    .remove_search {
+        background-color: lighten($red, 10%);
+    }
+    
+    .add_search, .remove_search {
+        @include leader(.25);
+    }
+    
+    select {
+        width: 100%;
+        margin-top: rhythm(.5);
+    }
+
+    #submit_items_search {
+        @include border-radius(5px);
+        padding: rhythm(.5);
+        margin: auto;
+        float: none;
+        display: block;
+        width: 100%;
+        @include trailer();
+        background-color: darken(saturate($teal, 15%), 15%);
+    }
+}
+
+/* @end */
+
+/* @group ------ Footer ------ */
 
 footer {
     clear: both;
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Navigation ------ */
+/* @group ------ Navigation ------ */
 
 header nav {
     display: inline-block;
@@ -214,14 +354,19 @@ nav ul {
         color: #FFF;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         text-align: center;
+        display: inline;
     }
 }
 
 #bottom-nav ul ul { display: none; }
 
-//* @end */
+/* @end */
 
-//* @group ------ Global elements ------ */
+/* @group ------ Global Selectors ------ */
+
+.container {
+  @include container;
+}
 
 div[role=main] {
     @include container;
@@ -253,32 +398,35 @@ div[role=main] {
     display: block;
 }
 
-//* @end */
+    /* @group ------ Form selectors ------ */
+    
+    .field {
+        clear: both;
+    }
+    
+    /* @end */
 
-//* @group ------ Home ------ */
+
+
+/* @end */
+
+/* @group ------ Home ------ */
 
 #home #intro {
     @include container;
     text-align: center;
-    line-height: 2 * $base-line-height;
 }
 
 #intro h1 {
     font-weight: normal;
 }
 
-#intro .button {
+#search + .button {
     background-color: $red;
     clear: both;
     @include leader();
     color: #fff;
-}
-
-#home #search-form {
-    width: 100%;
-    padding: rhythm(1) gutter(6);
-    float: left;
-    @include leader();
+    line-height: 2 * $base-line-height;
 }
 
 .items-list.with-images .item {
@@ -328,7 +476,7 @@ div[role=main] {
     }
 }
 
-#home .view-items-link {
+.view-all-items-link {
     background-color: rgba(0,0,0,.15);
     width: 100%;
     color: $yellow;
@@ -416,9 +564,9 @@ div[role=main] {
     @include trailer(.25);
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Items/Browse ------ */
+/* @group ------ Items/Browse ------ */
 
 .items.browse.list {
     .item {
@@ -507,9 +655,9 @@ div[role=main] {
     @include leader();
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Items/Show ------ */
+/* @group ------ Items/Show ------ */
 
 .items.show { 
     #primary {
@@ -527,9 +675,9 @@ div[role=main] {
     }
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Groups/Browse ------ */
+/* @group ------ Groups/Browse ------ */
 
 .groups-section-nav { display: none; }
 
@@ -742,9 +890,9 @@ div[role=main] {
     color: #fff;
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Groups/Show ------ */
+/* @group ------ Groups/Show ------ */
 
 .groups.show {
 
@@ -863,9 +1011,9 @@ div[role=main] {
     }
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Groups Settings ------ */
+/* @group ------ Groups Settings ------ */
 
 .group-manage {
     background: rgba(0,0,0,.25);
@@ -923,9 +1071,9 @@ div.groups-group {
     @include trailer();
 } 
 
-//* @end */
+/* @end */
 
-//* @group ------ Sites ------ */
+/* @group ------ Sites ------ */
 
 .sites-site {
     background-color: #fff;
@@ -985,16 +1133,44 @@ div.groups-group {
     margin-left: 20px;
 }
 
-//* @end */
+/* @end */
 
-//* @group ------ Sites/show ------ */
+/* @group ------ Sites/show ------ */
 
-.sites.display-case {
+#site-logo {
+    @include span-columns(3 alpha);
+    background: #fff;
+    padding: rhythm(.5) gutter(12);
+    
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
 
-//* @end */
+.sites.display-case #recent-items {
+    clear: both;
+}
 
-//* @group ------ Login ------ */
+#sites-overview > div:first-of-type > h3:first-of-type {
+    @include leader(0);
+}
+
+#sites-overview ul {
+    padding-left: 18px;
+}
+
+.sites.display-case h1:first-of-type {
+    @include trailer();
+}
+
+.sites.display-case #sidebar + #primary {
+    @include span-columns(8 omega);
+    @include padding-trailer(2);
+}
+/* @end */
+
+/* @group ------ Login ------ */
 
 #login-form {
     padding: 0;
@@ -1017,4 +1193,4 @@ div.groups-group {
     }
 }
 
-//* @end */
+/* @end */
