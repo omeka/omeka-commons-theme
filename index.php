@@ -2,8 +2,9 @@
 
 <div id="intro" role="introduction">
     <h1><?php echo __('The Omeka Commons is an open access repository of content aggregated from a network of Omeka websites.'); ?></h1>
-    <?php echo search_form(); ?>
     <a href="about" class="button"><?php echo __('Learn how to use the Omeka Commons'); ?></a>
+    <span class="or_search"><?php echo __('...or start searching!'); ?></span>
+    <?php echo search_form(); ?>
 </div>
 
 <?php if (get_theme_option('Homepage Text')): ?>

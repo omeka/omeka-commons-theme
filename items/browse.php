@@ -10,10 +10,16 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse grid'));
 
 <?php echo pagination_links(); ?>
 
+<?php if ($total_results > 0): ?>
 <div class="views">
     <span class="grid">Grid view</span>
     <span class="list">List view</span>
 </div>
+<?php else: ?>
+<div id="no-results">
+    <p><?php echo __('Your query returned no results.'); ?></p>
+</div>
+<?php endif; ?>
 
 <div class="items">
 <?php foreach (loop('items') as $item): ?>

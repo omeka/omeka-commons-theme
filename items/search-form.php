@@ -77,31 +77,6 @@ $formAttributes['method'] = 'GET';
         <button type="button" class="add_search"><?php echo __('Add a Field'); ?></button>
     </div>
 
-    <div id="search-by-range" class="field">
-        <?php echo $this->formLabel('range', __('Search by a range of ID#s (example: 1-4, 156, 79)')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formText('range', @$_GET['range'],
-                array('size' => '40')
-            );
-        ?>
-        </div>
-    </div>
-
-    <div class="field">
-        <?php echo $this->formLabel('collection-search', __('Search By Collection')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formSelect(
-                'collection',
-                @$_REQUEST['collection'],
-                array('id' => 'collection-search'),
-                get_table_options('Collection')
-            );
-        ?>
-        </div>
-    </div>
-
     <div class="field">
         <?php echo $this->formLabel('item-type-search', __('Search By Type')); ?>
         <div class="inputs">
@@ -163,23 +138,6 @@ $formAttributes['method'] = 'GET';
         </div>
     </div>
     <?php endif; ?>
-
-    <div class="field">
-        <?php echo $this->formLabel('featured', __('Featured/Non-Featured')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formSelect(
-                'featured',
-                @$_REQUEST['featured'],
-                array(),
-                label_table_options(array(
-                    '1' => __('Only Featured Items'),
-                    '0' => __('Only Non-Featured Items')
-                ))
-            );
-        ?>
-        </div>
-    </div>
 
     <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
