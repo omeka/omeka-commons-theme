@@ -419,6 +419,7 @@ div[role=main] {
 
 #intro h1 {
     font-weight: normal;
+    line-height: 2 * $base-line-height;
 }
 
 #search + .button {

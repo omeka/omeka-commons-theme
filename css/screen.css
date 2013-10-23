@@ -809,6 +809,7 @@ div[role=main]:after {
 
 #intro h1 {
   font-weight: normal;
+  line-height: 48px;
 }
 
 #search + .button, #search + .groups-button {
