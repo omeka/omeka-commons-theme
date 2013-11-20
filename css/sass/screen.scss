@@ -23,6 +23,28 @@ Table of Contents
 -- Login
 */
 
+// !------ Mixins ------ 
+
+@mixin card-description {
+    height: rhythm(5);
+    overflow: hidden;
+    position: relative;
+    
+    &:after {
+        content: "";
+        width: 100%;
+        height: rhythm(2);
+        @include background(linear-gradient(bottom, #fff, rgba(255,255,255,0)));
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    & > p:first-of-type {
+        margin-top: 0;
+    }
+}
+
 /* @group ------ Generic HTML Elements ------ */
 
 * {
@@ -55,6 +77,10 @@ button, input[type="submit"], .button {
     text-align: center;
     border: 0;
     color: #fff;
+    
+    &:hover {
+        background-color: darken(saturate($teal, 15%), 15%);
+    }
 }
 
 fieldset { 
@@ -564,6 +590,10 @@ div[role=main] {
     background-color: rgba(0,0,0,.15);
     width: 100%;
     color: $yellow;
+    
+    &:hover {
+        background-color: rgba(0,0,0,.3);
+    }
 }
 
 .items-list .item > .image {
@@ -701,6 +731,10 @@ div[role=main] {
         }
     }
     
+    .item-description {
+        @include card-description;
+    }
+    
     .views + .item {
         clear: both;
         
@@ -739,6 +773,16 @@ div[role=main] {
     float: left;
     @include leader();
     width: 100%;
+}
+
+
+#recent-items {
+    clear: both;
+}
+
+#sidebar + #primary {
+    @include span-columns(8 omega);
+    @include padding-trailer(2);
 }
 
 /* @end */
@@ -796,6 +840,7 @@ div[role=main] {
     padding: 5px 10px;
     color: #696969;
     font-weight: bold;
+    z-index: 1000;
     
     &:before {
         position: absolute;
@@ -840,7 +885,7 @@ div[role=main] {
     }
     
     .groups-description {
-        @include leader();
+        @include card-description;
     }
 
     h3 {
@@ -904,13 +949,22 @@ div[role=main] {
             border-left: 1px solid #e7e7e7;
         }
         
-        .groups-button {
+        .groups-button, .my-group {
             margin-bottom: 0;
             position: absolute;
             bottom: 0;
             left: 0;
             @include border-radius(0px);
         }
+        
+        .my-group {
+            background-color: #999;
+            padding: rhythm(.5) 0;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+        }
+
     }
 
     .groups-tags ul {
@@ -1055,46 +1109,6 @@ div[role=main] {
             }
         }
     }
-    
-    .group.item {
-        @include span-columns(6 alpha);
-        height: rhythm(17);
-        @include trailer();
-        background-color: #fff;
-        clear: none;
-        text-shadow: none;
-        color: #696969;
-        
-        a {
-            color: darken($red, 10%);
-            
-            &:hover { color: $red; }
-        }
-        
-        &:nth-of-type(2n) {
-            @include span-columns(6 omega);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        > * {
-            padding: 0 gutter();
-        }
-    }
-    
-    .image {
-        height: rhythm(7);
-        background-size: cover;
-        background-position: center center;
-        background-color: #ccc;
-    }
-    
-    .view-all-items-link {
-        clear: both;
-    }
 }
 
 /* @end */
@@ -1234,10 +1248,6 @@ div.groups-group {
     }
 }
 
-.sites.display-case #recent-items {
-    clear: both;
-}
-
 #sites-overview > div:first-of-type > h3:first-of-type {
     @include leader(0);
 }
@@ -1250,10 +1260,6 @@ div.groups-group {
     @include trailer();
 }
 
-.sites.display-case #sidebar + #primary {
-    @include span-columns(8 omega);
-    @include padding-trailer(2);
-}
 /* @end */
 
 /* @group ------ Login ------ */

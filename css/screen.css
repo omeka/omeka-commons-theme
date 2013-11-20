@@ -424,6 +424,9 @@ button, input[type="submit"], .button, .groups-button {
   border: 0;
   color: #fff;
 }
+button:hover, input[type="submit"]:hover, .button:hover, .groups-button:hover {
+  background-color: #2aad89;
+}
 
 fieldset {
   border: 0;
@@ -963,6 +966,9 @@ div[role=main]:after {
   width: 100%;
   color: #ffcc00;
 }
+.view-all-items-link:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
 .items-list .item > .image {
   height: 10.5em;
@@ -1104,6 +1110,27 @@ div[role=main]:after {
 .items.browse.grid .item a:active, .items.browse.grid .item a:hover {
   color: #ffb533;
 }
+.items.browse.grid .item-description {
+  height: 7.5em;
+  overflow: hidden;
+  position: relative;
+}
+.items.browse.grid .item-description:after {
+  content: "";
+  width: 100%;
+  height: 3em;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.items.browse.grid .item-description > p:first-of-type {
+  margin-top: 0;
+}
 .items.browse.grid .views + .item {
   clear: both;
 }
@@ -1137,6 +1164,19 @@ div[role=main]:after {
   float: left;
   margin-top: 1.5em;
   width: 100%;
+}
+
+#recent-items {
+  clear: both;
+}
+
+#sidebar + #primary {
+  width: 66.10169%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+  padding-bottom: 3em;
 }
 
 /* @end */
@@ -1202,6 +1242,7 @@ div[role=main]:after {
   padding: 5px 10px;
   color: #696969;
   font-weight: bold;
+  z-index: 1000;
 }
 .visibility-description:before {
   position: absolute;
@@ -1249,7 +1290,25 @@ div[role=main]:after {
   padding: 0.375em 0;
 }
 .groups.browse .groups-description {
-  margin-top: 1.5em;
+  height: 7.5em;
+  overflow: hidden;
+  position: relative;
+}
+.groups.browse .groups-description:after {
+  content: "";
+  width: 100%;
+  height: 3em;
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.groups.browse .groups-description > p:first-of-type {
+  margin-top: 0;
 }
 .groups.browse h3 {
   display: none;
@@ -1303,7 +1362,7 @@ div[role=main]:after {
   left: 50%;
   border-left: 1px solid #e7e7e7;
 }
-.groups.browse .hentry .groups-button {
+.groups.browse .hentry .groups-button, .groups.browse .hentry .my-group {
   margin-bottom: 0;
   position: absolute;
   bottom: 0;
@@ -1313,6 +1372,13 @@ div[role=main]:after {
   -ms-border-radius: 0px;
   -o-border-radius: 0px;
   border-radius: 0px;
+}
+.groups.browse .hentry .my-group {
+  background-color: #999;
+  padding: 0.75em 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
 }
 .groups.browse .groups-tags ul {
   padding-left: 0;
@@ -1445,47 +1511,6 @@ div[role=main]:after {
 }
 .groups.show #primary > div:last-of-type {
   margin-bottom: 0em;
-}
-.groups.show .group.item {
-  width: 49.15254%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-  height: 25.5em;
-  margin-bottom: 1.5em;
-  background-color: #fff;
-  clear: none;
-  text-shadow: none;
-  color: #696969;
-}
-.groups.show .group.item a {
-  color: #d11416;
-}
-.groups.show .group.item a:hover {
-  color: #eb2d2f;
-}
-.groups.show .group.item:nth-of-type(2n) {
-  width: 49.15254%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-.groups.show .group.item img {
-  max-width: 100%;
-  height: auto;
-}
-.groups.show .group.item > * {
-  padding: 0 1.69492%;
-}
-.groups.show .image {
-  height: 10.5em;
-  background-size: cover;
-  background-position: center center;
-  background-color: #ccc;
-}
-.groups.show .view-all-items-link {
-  clear: both;
 }
 
 /* @end */
@@ -1643,10 +1668,6 @@ div.groups-group:last-of-type {
   height: auto;
 }
 
-.sites.display-case #recent-items {
-  clear: both;
-}
-
 #sites-overview > div:first-of-type > h3:first-of-type {
   margin-top: 0em;
 }
@@ -1657,15 +1678,6 @@ div.groups-group:last-of-type {
 
 .sites.display-case h1:first-of-type {
   margin-bottom: 1.5em;
-}
-
-.sites.display-case #sidebar + #primary {
-  width: 66.10169%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-  padding-bottom: 3em;
 }
 
 /* @end */
