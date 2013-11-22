@@ -1200,6 +1200,121 @@ div[role=main]:after {
   display: inline;
 }
 
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.modal {
+  display: none;
+  background: #eee;
+  overflow: auto;
+  z-index: 1001;
+  position: absolute;
+  width: 500px;
+  min-height: 300px;
+  text-shadow: none;
+  color: #696969;
+}
+
+.modal-header {
+  background-color: #60c4a8;
+  color: #fff;
+  padding: 0.75em 20px;
+}
+.modal-header h3 {
+  font-weight: 200;
+  margin: 0;
+}
+.modal-header .close-button {
+  float: right;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+#user-groups {
+  padding: 0;
+  margin: 1.5em 0;
+  list-style-type: none;
+}
+#user-groups .groups-item-exists, #user-groups a {
+  color: #eb2d2f;
+  padding: 0.75em 20px;
+  display: inline-block;
+  width: 100%;
+}
+#user-groups li {
+  background-color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  height: 3em;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+#user-groups li:not(:first-of-type) {
+  margin-top: 1.5em;
+}
+#user-groups li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  background-color: #f1f1f1;
+  float: right;
+  bottom: 0;
+  right: 0;
+  width: 48px;
+  z-index: 10;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: center;
+}
+#user-groups .groups-item-exists {
+  background-color: #E0E0E0;
+  color: #999;
+}
+#user-groups .groups-item-exists:after {
+  content: "\2713";
+  background-color: #c9c9c9;
+}
+#user-groups .checked:after {
+  content: "\2713";
+  background-color: #60c4a8;
+  color: #fff;
+}
+#user-groups .groups-add-item input[type=checkbox] {
+  z-index: 0;
+  position: absolute;
+  right: 10px;
+}
+
+.empty h3:first-of-type, .empty ul {
+  display: none;
+}
+
+.groups-item-status.empty h3:nth-of-type(2) {
+  display: block;
+}
+
+.groups-item-status h3:nth-of-type(2) {
+  display: none;
+}
+
+.added {
+  text-indent: -9999px;
+  display: inline-block;
+}
+
 /* @end */
 /* @group ------ Groups/Browse ------ */
 .groups-section-nav {
@@ -1425,6 +1540,17 @@ div[role=main]:after {
 
 .loggedout.groups.browse .hentry {
   height: 22.5em;
+}
+
+.groups-pending {
+  position: absolute;
+  bottom: 0;
+  background-color: #ffcc00;
+  left: 0;
+  right: 0;
+  padding: .75em;
+  margin: 0;
+  text-align: center;
 }
 
 .groups-button {
