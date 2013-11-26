@@ -8,5 +8,7 @@
             $('body').toggleClass('list');
             $('body').toggleClass('grid');
         });
+        var groupActions = $('#group-actions').detach();
+        $("#sidebar").append(groupActions);
     });
 }) (jQuery)

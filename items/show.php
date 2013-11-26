@@ -1,4 +1,5 @@
 <?php $itemTitle = metadata('item', array('Dublin Core', 'Title')); ?>
+<?php queue_js_file('items'); ?>
 <?php echo head(array('title' => $itemTitle, 'bodyclass' => 'items show')); ?>
 
 <h1><?php echo $itemTitle; ?></h1>
