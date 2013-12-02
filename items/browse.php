@@ -37,7 +37,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse grid'));
         <div class="no image"></div>
     <?php endif; ?>
 
-    <h2><?php echo link_to_item(metadata('item', array('Dublin Core', 'Title')), array('class'=>'permalink')); ?></h2>
+    <h2><?php echo link_to_item(snippet(metadata('item', array('Dublin Core', 'Title')), 0, 40, '...'), array('class'=>'permalink')); ?></h2>
     <div class="item-meta">
 
     <?php if ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>

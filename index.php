@@ -33,7 +33,7 @@
     <h2><?php echo __('Items recently uploaded to the Omeka Commons'); ?></h2>
 
     <?php
-    $homepageRecentItems = (int)get_theme_option('Homepage Recent Items') ? get_theme_option('Homepage Recent Items') : '9';
+    $homepageRecentItems = (int)get_theme_option('Homepage Recent Items') ? get_theme_option('Homepage Recent Items') : get_option('per_page_public');
     set_loop_records('items', get_recent_items($homepageRecentItems));
     if (has_loop_records('items')):
     ?>

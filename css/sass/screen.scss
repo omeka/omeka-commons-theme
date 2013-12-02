@@ -499,6 +499,12 @@ div[role=main] {
     padding: rhythm(2) 0;
 }
 
+#sidebar .button, 
+#sidebar button,
+#sidebar input[type=submit] {
+    width: 100%;
+}
+
     /* @group ------ Form selectors ------ */
     
     .field {
@@ -562,11 +568,11 @@ div[role=main] {
         padding: rhythm(.5) 0;
     }
     
-    &:nth-of-type(3n) {
+    &:nth-of-type(4n) {
         @include span-columns(4 omega);
     }
     
-    &:first-of-type, &:nth-of-type(3n+1) {
+    &:first-of-type, &:nth-of-type(4n+1) {
         @include span-columns(4 alpha);
     }
     
@@ -719,7 +725,7 @@ div[role=main] {
         
         @include card;
 
-        &:nth-of-type(3n) {
+        &:nth-of-type(4n) {
             @include span-columns(4 omega);
         }
 
@@ -785,29 +791,39 @@ div[role=main] {
     clear: both;
 }
 
-#sidebar + #primary {
-    @include span-columns(8 omega);
-    @include padding-trailer(2);
-}
-
 /* @end */
 
 /* @group ------ Items/Show ------ */
 
 .items.show { 
-    #primary {
-        @include span-columns(8 omega);
-    }
-        
     div[role="main"] > h1 {
         width: 100%;
         padding: 0;
-        margin: 0 0 rhythm(1);
     }
     
     #sidebar {
         @include span-columns(4 alpha);
+        @include trailer(2);
     }
+}
+
+#item-content-nav {
+    background: rgba(0,0,0,.25);
+    padding: rhythm(.25) 10px;
+    @include border-radius(3px);
+    margin: rhythm(2) 0 rhythm();
+
+    ul {
+        margin: 0;
+    }
+
+    .current {
+        font-weight: bold;
+    }
+}
+
+#group-actions {
+    @include trailer(2);
 }
 
 .modal-header {
@@ -818,6 +834,130 @@ div[role=main] {
     background-color: $teal;
 }
 
+#sidebar + #primary {
+    @include span-columns(11 omega);
+    @include padding-trailer(2);
+}
+
+.user-tags {
+    @include trailer(2);
+}
+
+.user-tags-list {
+    list-style-type: none;
+    padding: 0;
+    float: left;
+    margin: 0 0 rhythm() 0;
+    width: 100%;
+    
+    li {
+        background-color: $yellow;
+        @include border-radius(3px);
+        float: left;
+        text-shadow: none;
+        @include trailer(.5);
+        position: relative;
+        padding-right: 10px;
+        margin-right: rhythm(.5);
+        width: 100%;
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    a {
+        color: darken($yellow, 30%);
+        padding: rhythm(.25) 10px;
+        display: inline-block;
+        max-width: 90%;
+    }
+    
+    .remove {
+        text-indent: -9999px;
+        display: inline-block;
+        cursor: pointer;
+        
+        &:after {
+            content: "x";
+            text-indent: 0;
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            line-height: rhythm(1.5);
+            background-color: darken($yellow, 10%);
+            padding: 0 10px;
+            @include border-radius(0 3px 3px 0);
+        }
+    }
+    
+}
+
+.user-tags label {
+    font-weight: bold;
+    font-size: 1.25 * $base-font-size;
+    @include trailer();
+    clear: both;
+}
+
+.user-tags #tags {
+    float: left;
+    padding: rhythm(.5) 10px;
+    border: 0;
+    margin: rhythm(.5) 0 0;
+    @include border-radius(3px 0 0 3px);
+    width: 75%;
+}
+
+#tag-errors {
+    background-color: lighten($red, 30%);
+    color: darken($red, 20%);
+    margin-bottom: rhythm();
+    @include border-radius(3px);
+    clear: both;
+    padding: rhythm(.25);
+    @include text-shadow(none);
+}
+
+#sidebar #user-tags-submit {
+    padding: rhythm(.5) 10px;
+    @include border-radius(0 3px 3px 0);
+    margin: rhythm(.5) 0 0;
+    width: 25%;
+}
+
+#embed-code-text {
+    width: 100%;
+    font-size: .75 * $base-font-size;
+    line-height: $base-line-height;
+    padding: rhythm(.5) 10px;
+}
+
+#comments-container {
+    input[type="text"], textarea {
+        width: 100%;
+        border: 0;
+        @include border-radius(3px);
+        padding: rhythm(.5) 10px;
+    }
+    
+    div {
+        margin: 0;
+        padding: 0;
+    }
+    
+    label {
+        display: block;
+        padding-bottom: 0;
+        @include trailer(.25);
+    }
+    
+    div.field {
+        @include trailer();
+    }
+}
 /* @end */
 
 /* @group ------ Groups/Browse ------ */
