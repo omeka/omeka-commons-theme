@@ -1114,6 +1114,9 @@ div[role=main]:after {
 }
 
 .items.browse.grid .item {
+  padding-left: 1.5873%;
+  padding-right: 1.5873%;
+  overflow: hidden;
   width: 23.80952%;
   float: left;
   margin-right: 1.5873%;
@@ -1131,9 +1134,6 @@ div[role=main]:after {
   margin-bottom: 1.5em;
   position: relative;
   height: 25.5em;
-  overflow: hidden;
-  padding-left: 1.5873%;
-  padding-right: 1.5873%;
   overflow: hidden;
 }
 .items.browse.grid .item:after {
@@ -1189,6 +1189,9 @@ div[role=main]:after {
 }
 .items.browse.grid .item a:active, .items.browse.grid .item a:hover {
   color: #ffb533;
+}
+.items.browse.grid .item h2 {
+  font-size: 20px;
 }
 .items.browse.grid .item-description {
   height: 7.5em;
