@@ -36,6 +36,10 @@ Table of Contents
 }
 
 @mixin card {
+    padding-left: gutter(16);
+    padding-right: gutter(16);
+    overflow: hidden;
+
     &:after {
         content: "";
         width: 100%;
@@ -44,7 +48,34 @@ Table of Contents
         position: absolute;
         bottom: 0;
         left: 0;
-    }  
+    }
+    
+    h2 {
+        font-weight: normal;
+        margin: 0 percentage(-1/4);
+        padding: rhythm(.5) percentage(1/4);
+        font-size: 1.25 * $base-font-size;
+        background-color: #fff;
+        @include box-shadow(0 0 40px rgba(0, 0, 0, 0.3));
+        position: relative;
+        
+        &:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 50px;
+            box-shadow: none;
+            position: absolute;
+            left: 0;
+            background-color: #fff;
+        }
+        
+        & + * {
+            position: relative;
+            background-color: #fff;
+            margin-top: 0;
+        }
+    }
 }
 
 /* @group ------ Generic HTML Elements ------ */
@@ -550,6 +581,7 @@ div[role=main] {
 }
 
 .items-list.with-images .item {
+    @include card;
     font-color: #363636;
     background-color: #fff;
     color: #696969;
@@ -563,12 +595,6 @@ div[role=main] {
     position: relative;
     height: rhythm(17);
     @include span-columns(4);
-    
-    h2 {
-        font-weight: normal;
-        margin: 0 gutter(6);
-        padding: rhythm(.5) 0;
-    }
     
     &:nth-of-type(4n) {
         @include span-columns(4 omega);
@@ -611,8 +637,8 @@ div[role=main] {
     background-size: cover;
     background-position: center center;
     background-color: #ccc;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: percentage(-1/12);
+    margin-right: percentage(-1/12);
     position: relative;
 }
 
@@ -702,12 +728,6 @@ div[role=main] {
 }
 
 .items.browse.grid {
-    h2 {
-        font-weight: normal;
-        margin: 0;
-        padding: rhythm(.5) 0;
-    }
-
     .item {
         @include span-columns(4);
         font-color: #363636;
@@ -1033,11 +1053,6 @@ div[role=main] {
 }
 
 .groups.browse {
-    h2 {
-        font-weight: normal;
-        margin: 0;
-        padding: rhythm(.25) 0;
-    }
     
     .groups-description {
         @include card-description;
@@ -1346,18 +1361,14 @@ div.groups-group {
     color: #696969;
     text-shadow: none;
     padding: rhythm(.5) gutter(12) rhythm(3);
-    @include span-columns(4);
+    width: 32%;
+    margin-right: 2%;
     @include trailer();
-    
-    &:first-of-type, &:nth-of-type(3n+1) {
-        @include span-columns(4 alpha);
-    }
-    
-    &:nth-of-type(3n) {
-        @include span-columns(4 omega);
-    }
-    
     position: relative;
+
+    &:nth-of-type(3n) {
+        margin-right: 0;
+    }
     
     img {
         max-width: 100%;
