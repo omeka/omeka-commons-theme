@@ -1452,3 +1452,15 @@ div.groups-group {
 }
 
 /* @end */
+
+/* @group ------ AddThis ------ */
+
+.addthis_toolbox {
+    @include leader();
+    @include trailer(2);
+}
+
+.addthis_32x32_style .addthis_counter.addthis_bubble_style {
+    @include border-radius(3px);
+    text-shadow: none;
+}

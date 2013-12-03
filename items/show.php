@@ -12,6 +12,18 @@
 </nav>
 
 <div id="sidebar">
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+    <a class="addthis_button_preferred_1"></a>
+    <a class="addthis_button_preferred_2"></a>
+    <a class="addthis_button_preferred_3"></a>
+    <a class="addthis_button_compact"></a>
+    <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529e3ab356ca7b3f"></script>
+    <!-- AddThis Button END -->
+
     <!-- The following returns all of the files associated with an item. -->
     <?php if (metadata('item', 'has files')): ?>
     <div id="itemfiles" class="element">
