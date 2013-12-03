@@ -484,17 +484,18 @@ header {
   float: left;
 }
 
-.user input[type=text],
+/* 
+.user input[type=text], 
 .user input[type=password] {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 0;
+    background-color: rgba(255,255,255,.05);
+    border: 0;
 }
 
 .user {
-  float: right;
-  margin-top: 1.5em;
-}
-
+    float: right;
+    @include leader();
+} 
+*/
 .tab {
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;

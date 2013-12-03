@@ -139,6 +139,7 @@ header {
     float: left;
 }
 
+/* 
 .user input[type=text], 
 .user input[type=password] {
     background-color: rgba(255,255,255,.05);
@@ -148,7 +149,8 @@ header {
 .user {
     float: right;
     @include leader();
-}
+} 
+*/
 
 .tab {
     @include border-radius(5px 5px 0 0);

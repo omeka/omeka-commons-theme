@@ -6,7 +6,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse grid'));
 
 <h1><?php echo $pageTitle;?> <?php echo __('(%s total)', $total_results); ?></h1>
 
-<?php echo item_search_filters(); ?>
+<?php echo oc_item_search_filters(); ?>
 
 <?php echo pagination_links(); ?>
 
