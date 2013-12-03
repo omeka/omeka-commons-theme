@@ -728,6 +728,7 @@ div[role=main] {
 
 .items.browse.grid {
     .item {
+        @include card;
         @include span-columns(4);
         font-color: #363636;
         background-color: #fff;
@@ -744,7 +745,6 @@ div[role=main] {
         height: rhythm(17);
         overflow: hidden;
         
-        @include card;
 
         &:nth-of-type(4n) {
             @include span-columns(4 omega);
@@ -760,6 +760,10 @@ div[role=main] {
         
         a:active, a:hover {
             color: lighten($yellow-on-white, 10%);
+        }
+        
+        h2 {
+            font-size: 1.25 * $base-font-size;
         }
     }
     
