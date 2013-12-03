@@ -54,7 +54,7 @@
                 <div class="no image"></div>
             <?php endif; ?>
 
-            <h2><?php echo link_to_item(); ?></h2>
+            <h2><?php echo link_to_item(snippet(metadata('item', array('Dublin Core', 'Title')), 0, 50, '...')); ?></h2>
 
             <?php if($desc = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>150))): ?>
 
