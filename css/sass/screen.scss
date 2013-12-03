@@ -1363,6 +1363,7 @@ div.groups-group {
     padding: rhythm(.5) gutter(12) rhythm(3);
     width: 32%;
     margin-right: 2%;
+    float: left;
     @include trailer();
     position: relative;
 

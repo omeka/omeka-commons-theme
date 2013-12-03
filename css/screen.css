@@ -1813,6 +1813,7 @@ div.groups-group:last-of-type {
   padding: 0.75em 2.12766% 4.5em;
   width: 32%;
   margin-right: 2%;
+  float: left;
   margin-bottom: 1.5em;
   position: relative;
 }
