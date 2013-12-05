@@ -685,12 +685,11 @@ div[role=main] {
 
 #featured-site {
     @include span-columns(12 alpha);
-    @include leader(3);
     
     h2 { margin-top: 0; }
     
     .placeholder, img {
-        width: 60%;
+        width: 30%;
         float: left;
         height: rhythm(10);
         margin-right: gutter(6);

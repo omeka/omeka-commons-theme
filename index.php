@@ -36,8 +36,9 @@
         <?php if ($siteLogo = sites_site_logo($featuredSite)): ?>
         <?php echo $siteLogo; ?>
         <?php endif; ?>
-        <h2><span class="category">Featured Site</span> <?php echo metadata($featuredSite, 'Title'); ?></h2>  
-        <?php echo metadata($featuredSite, 'Description'); ?>
+        <h2><span class="category">Featured Site</span> <?php echo link_to($featuredSite, 'show', metadata($featuredSite, 'Title')); ?></h2>  
+        <p><?php echo metadata($featuredSite, 'Description'); ?></p>
+        <?php echo link_to($featuredSite, 'show', __('Read more about %s', metadata($featuredSite, 'Title')), array('class' => 'button')); ?>
     </div>
     <?php endif; ?>
     
