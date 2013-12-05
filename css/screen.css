@@ -472,16 +472,37 @@ td {
 /* @end */
 /* @group ------ Header ------ */
 header {
-  padding: 3em 0 1.5em;
+  *zoom: 1;
+  max-width: 63em;
+  _width: 63em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3em;
+  padding-bottom: 1.5em;
   text-align: right;
+}
+header:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 #home header {
-  padding: 3em 0;
+  padding-bottom: 3em;
 }
 
 .site-title {
   float: left;
+}
+
+#home .row + .row {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 2.9375em;
+  margin-top: 3em;
 }
 
 /* 
@@ -918,6 +939,18 @@ div[role=main]:after {
   margin-top: 1.5em;
 }
 
+.item-gallery {
+  overflow: auto;
+  float: left;
+  margin-right: 2.12766%;
+  width: 225px;
+}
+.item-gallery img {
+  width: 75px;
+  height: auto;
+  float: left;
+}
+
 .items-list.with-images .item {
   padding-left: 1.5873%;
   padding-right: 1.5873%;
@@ -1041,13 +1074,13 @@ div[role=main]:after {
   border-color: rgba(255, 255, 255, 0.15);
   border-top-style: solid;
   border-top-width: 0.0625em;
-  padding-top: 1.4375em;
+  padding-top: -0.0625em;
   margin-bottom: 3em;
   clear: both;
 }
 
 #featured-site {
-  width: 55.55556%;
+  width: 74.60317%;
   float: left;
   margin-right: 1.5873%;
   display: inline;
@@ -1056,11 +1089,14 @@ div[role=main]:after {
 #featured-site h2 {
   margin-top: 0;
 }
-#featured-site .placeholder {
+#featured-site .placeholder, #featured-site img {
   width: 60%;
   float: left;
   height: 15em;
   margin-right: 4.34783%;
+}
+#featured-site img {
+  height: auto;
 }
 
 #home .category {
@@ -1071,14 +1107,16 @@ div[role=main]:after {
 }
 
 #stats {
-  width: 17.46032%;
+  width: 23.80952%;
   float: right;
   margin-right: 0;
   *margin-left: -1em;
   display: inline;
-  margin-top: 4.5em;
-  margin-bottom: 3em;
   text-align: right;
+  border-color: rgba(255, 255, 255, 0.15);
+  border-left-style: solid;
+  border-left-width: 0.0625em;
+  padding-left: 1.4375em;
 }
 #stats a {
   width: 100%;
@@ -1237,6 +1275,18 @@ div[role=main]:after {
 }
 
 #recent-items {
+  *zoom: 1;
+  max-width: 63em;
+  _width: 63em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+}
+#recent-items:after {
+  content: "";
+  display: table;
   clear: both;
 }
 
@@ -1786,12 +1836,13 @@ div.groups-group:last-of-type {
   margin: 0;
 }
 
-.group-notifications {
+.group-notifications.field {
   width: 36.50794%;
   float: right;
   margin-right: 0;
   *margin-left: -1em;
   display: inline;
+  clear: none;
 }
 
 .group-membership p:only-of-type {

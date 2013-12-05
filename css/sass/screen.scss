@@ -157,16 +157,24 @@ td {
 /* @group ------ Header ------ */
 
 header {
-    padding: rhythm(2) 0 rhythm(1);
+    @include container;
+    @include padding-leader(2);
+    @include padding-trailer();
     text-align: right;
 }
 
 #home header {
-    padding: rhythm(2) 0;
+    @include padding-trailer(2);
 }
 
 .site-title {
     float: left;
+}
+
+#home .row + .row {
+    border-color: rgba(255,255,255,.15);
+    @include leading-border(1px, 2, $base-font-size, solid);
+    @include leader(2);
 }
 
 /* 
@@ -579,6 +587,19 @@ div[role=main] {
     @include leader();
 }
 
+.item-gallery {
+    overflow: auto;
+    float: left;
+    margin-right: gutter(12);
+    width: 225px;
+
+    img {
+        width: 75px;
+        height: auto;
+        float: left;
+    }
+}
+
 .items-list.with-images .item {
     @include card;
     font-color: #363636;
@@ -657,22 +678,26 @@ div[role=main] {
 #home #recent-items {
     @include leader(2);
     border-color: rgba(255,255,255,.15);
-    @include leading-border(1px, 1, $base-font-size, solid);
+    @include leading-border(1px, 0, $base-font-size, solid);
     @include trailer(2);
     clear: both;
 }
 
 #featured-site {
-    @include span-columns(9 alpha);
+    @include span-columns(12 alpha);
     @include leader(3);
     
     h2 { margin-top: 0; }
     
-    .placeholder {
+    .placeholder, img {
         width: 60%;
         float: left;
         height: rhythm(10);
         margin-right: gutter(6);
+    }
+    
+    img {
+        height: auto;
     }
 }
 
@@ -684,10 +709,10 @@ div[role=main] {
 }
 
 #stats {
-    @include span-columns(3 omega);
-    @include leader(3);
-    @include trailer(2);
+    @include span-columns(4 omega);
     text-align: right;
+    border-color: rgba(255,255,255,.15);
+    @include apply-side-rhythm-border(left, 1px, 1, $base-font-size, solid);
     
     a { 
         width: 100%; 
@@ -813,6 +838,7 @@ div[role=main] {
 
 
 #recent-items {
+    @include container;
     clear: both;
 }
 
@@ -1341,8 +1367,9 @@ div.groups-group {
     p { margin: 0; }
 }
 
-.group-notifications {
+.group-notifications.field {
     @include span-columns(6 omega);
+    clear: none;
 }
 
 .group-membership p:only-of-type {

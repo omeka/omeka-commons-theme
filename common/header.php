@@ -36,19 +36,16 @@
 <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
 
     <header>
-        <div class="container">
-            <div class="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
+        <div class="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
 
-            <nav>
-                <?php echo public_nav_main(); ?>
-            </nav>
-            <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            
-            <?php if (@$bodyid !== 'home'): ?>
-            <?php echo search_form(); ?>
-            <?php endif; ?>
-
-        </div>
+        <nav>
+            <?php echo public_nav_main(); ?>
+        </nav>
+        <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
+        
+        <?php if (@$bodyid !== 'home'): ?>
+        <?php echo search_form(); ?>
+        <?php endif; ?>
     </header>
     
     <div role="main">

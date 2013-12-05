@@ -11,22 +11,45 @@
 <p><?php echo get_theme_option('Homepage Text'); ?></p>
 <?php endif; ?>
 
-<?php if($featuredSite = get_random_featured_site()): ?>
-<div id="featured-site">
-    <div class="placeholder image"></div>
-    <h2><span class="category">Featured Site</span> <?php echo metadata($featuredSite, 'Title'); ?></h2>  
-    <?php echo metadata($featuredSite, 'Description'); ?>
+
+<div class="row container">
+    <?php if($featuredGroups = get_random_featured_groups(1)): ?>
+    <?php $featuredGroup = $featuredGroups[0]; ?>
+    <div id="featured-group">
+        <div class="item-gallery">
+        <?php $featuredItems = get_records('Item', array('group_id' => $featuredGroup->id, 'hasImage' => true), 9); ?>
+        <?php foreach($featuredItems as $featuredItem): ?>
+            <?php echo link_to_item(item_image('square_thumbnail', array('alt' => __('Image thumbnail link to %s', metadata($featuredItem, array('Dublin Core', 'Title'))), 'title' => ''), 0, $featuredItem), array(), 'show', $featuredItem); ?>
+            <?php echo $featuredItem->_files; ?>
+        <?php endforeach; ?>
+        </div>
+        <h2><span class="category">Featured Group</span> <?php echo link_to($featuredGroup, 'show', metadata($featuredGroup, 'Title')); ?></h2>  
+        <p><?php echo snippet($featuredGroup->description, 0, 250); ?></p>
+        <?php echo link_to($featuredGroup, 'show', __('Read more about %s', metadata($featuredGroup, 'Title')), array('class' => 'button')); ?>
+    </div>
+    <?php endif; ?>
 </div>
-<?php endif; ?>
 
-<div id="stats">
+<div class="row container">
+    <?php if($featuredSite = get_random_featured_site()): ?>
+    <div id="featured-site">
+        <?php if ($siteLogo = sites_site_logo($featuredSite)): ?>
+        <?php echo $siteLogo; ?>
+        <?php endif; ?>
+        <h2><span class="category">Featured Site</span> <?php echo metadata($featuredSite, 'Title'); ?></h2>  
+        <?php echo metadata($featuredSite, 'Description'); ?>
+    </div>
+    <?php endif; ?>
     
-    <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
+    <div id="stats">
+        
+        <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
+        
+        <div class="sites"><span class="counter"><?php echo total_records('sites'); ?></span> sites</div>
+        
+        <span class="add-site-link"><a href="#" class="button">Add your site</a></span>
     
-    <div class="sites"><span class="counter"><?php echo total_records('sites'); ?></span> sites</div>
-    
-    <span class="add-site-link"><a href="#" class="button">Add your site</a></span>
-
+    </div>
 </div>
 
 <div id="recent-items">
