@@ -1084,13 +1084,12 @@ div[role=main]:after {
   float: left;
   margin-right: 1.5873%;
   display: inline;
-  margin-top: 4.5em;
 }
 #featured-site h2 {
   margin-top: 0;
 }
 #featured-site .placeholder, #featured-site img {
-  width: 60%;
+  width: 30%;
   float: left;
   height: 15em;
   margin-right: 4.34783%;
