@@ -58,6 +58,8 @@ function oc_item_search_filters(array $params = null)
                     $filter = 'Site Collection';
                     $siteCollection = get_db()->getTable('SiteContext_Collection')->find($value);
                     $displayValue = $siteCollection->title;
+                    $site = get_record_by_id('Site', $siteCollection->site_id);
+                    $displayArray['Site'] = metadata($site, 'Title');
                     break;
 
                 case 'search':
