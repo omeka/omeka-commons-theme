@@ -56,7 +56,7 @@ function oc_item_search_filters(array $params = null)
                     
                 case 'site_collection_id':
                     $filter = 'Site Collection';
-                    $siteCollection = get_db()->getTable('SiteContext_Collection')->find($recordId);
+                    $siteCollection = get_db()->getTable('SiteContext_Collection')->find($value);
                     $displayValue = $siteCollection->title;
                     break;
 

@@ -1295,18 +1295,6 @@ div[role=main]:after {
 }
 
 #recent-items {
-  *zoom: 1;
-  max-width: 63em;
-  _width: 63em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  clear: both;
-}
-#recent-items:after {
-  content: "";
-  display: table;
   clear: both;
 }
 
