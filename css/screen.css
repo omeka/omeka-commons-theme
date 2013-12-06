@@ -1559,11 +1559,11 @@ div.user-tags {
   background-color: #999;
 }
 
-.closed {
+.private, .closed {
   background-color: #f8b9b9;
   color: #a30f11;
 }
-.closed .more-info {
+.private .more-info, .closed .more-info {
   background-color: #a30f11;
 }
 
@@ -1743,10 +1743,6 @@ div.user-tags {
 }
 .groups.show #sidebar {
   width: 23.80952%;
-  float: left;
-  margin-right: 1.5873%;
-  display: inline;
-  width: 17.46032%;
   float: left;
   margin-right: 1.5873%;
   display: inline;

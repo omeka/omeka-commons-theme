@@ -1076,7 +1076,7 @@ div.user-tags {
     .more-info { background-color: #999; }
 }
 
-.closed {
+.private, .closed {
     background-color: lighten($red, 30%);
     color: darken($red, 20%);
 
@@ -1281,7 +1281,6 @@ div.user-tags {
     
     #sidebar {
         @include span-columns(4 alpha);
-        @include span-columns(3 alpha);
         
         .groups-button {
             padding: rhythm(.25) 10px;
