@@ -682,11 +682,11 @@ div[role=main] {
     @include trailer(2);
     clear: both;
 }
+    
+#home .row h2 { margin-top: 0; }
 
 #featured-site {
-    @include span-columns(12 alpha);
-    
-    h2 { margin-top: 0; }
+    @include span-columns(12 omega);
     
     .placeholder, img {
         width: 30%;
@@ -700,6 +700,16 @@ div[role=main] {
     }
 }
 
+#featured-group {
+    border-color: rgba(255,255,255,.15);
+    @include span-columns(11 alpha);
+    @include apply-side-rhythm-border(right, 1px, 1, $base-font-size, solid);
+}
+
+#group-intro {
+    @include span-columns(5 omega);
+}
+
 #home .category {
     text-transform: uppercase;
     font-size: $base-font-size;
@@ -708,10 +718,10 @@ div[role=main] {
 }
 
 #stats {
-    @include span-columns(4 omega);
+    @include span-columns(4 alpha);
     text-align: right;
     border-color: rgba(255,255,255,.15);
-    @include apply-side-rhythm-border(left, 1px, 1, $base-font-size, solid);
+    @include apply-side-rhythm-border(right, 1px, 1, $base-font-size, solid);
     
     a { 
         width: 100%; 

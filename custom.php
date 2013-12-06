@@ -53,6 +53,12 @@ function oc_item_search_filters(array $params = null)
                     $filter = 'Site';
                     $displayValue = $value;
                     break;
+                    
+                case 'site_collection_id':
+                    $filter = 'Site Collection';
+                    $siteCollection = get_db()->getTable('SiteContext_Collection')->find($recordId);
+                    $displayValue = $siteCollection->title;
+                    break;
 
                 case 'search':
                     $filter = 'Keyword';

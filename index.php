@@ -11,6 +11,28 @@
 <p><?php echo get_theme_option('Homepage Text'); ?></p>
 <?php endif; ?>
 
+<div class="row container">
+    <div id="stats">
+        
+        <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
+        
+        <div class="sites"><span class="counter"><?php echo total_records('sites'); ?></span> sites</div>
+        
+        <span class="add-site-link"><a href="#" class="button">Add your site</a></span>
+    
+    </div>
+
+    <?php if($featuredSite = get_random_featured_site()): ?>
+    <div id="featured-site">
+        <?php if ($siteLogo = sites_site_logo($featuredSite)): ?>
+        <?php echo $siteLogo; ?>
+        <?php endif; ?>
+        <h2><span class="category">Featured Site</span> <?php echo link_to($featuredSite, 'show', metadata($featuredSite, 'Title')); ?></h2>  
+        <p><?php echo metadata($featuredSite, 'Description'); ?></p>
+        <?php echo link_to($featuredSite, 'show', __('Read more about %s', metadata($featuredSite, 'Title')), array('class' => 'button')); ?>
+    </div>
+    <?php endif; ?>
+</div>
 
 <div class="row container">
     <?php if($featuredGroups = get_random_featured_groups(1)): ?>
@@ -27,30 +49,12 @@
         <p><?php echo snippet($featuredGroup->description, 0, 250); ?></p>
         <?php echo link_to($featuredGroup, 'show', __('Read more about %s', metadata($featuredGroup, 'Title')), array('class' => 'button')); ?>
     </div>
-    <?php endif; ?>
-</div>
-
-<div class="row container">
-    <?php if($featuredSite = get_random_featured_site()): ?>
-    <div id="featured-site">
-        <?php if ($siteLogo = sites_site_logo($featuredSite)): ?>
-        <?php echo $siteLogo; ?>
-        <?php endif; ?>
-        <h2><span class="category">Featured Site</span> <?php echo link_to($featuredSite, 'show', metadata($featuredSite, 'Title')); ?></h2>  
-        <p><?php echo metadata($featuredSite, 'Description'); ?></p>
-        <?php echo link_to($featuredSite, 'show', __('Read more about %s', metadata($featuredSite, 'Title')), array('class' => 'button')); ?>
+    <div id="group-intro">
+        <h2><?php echo __('What is a Group?'); ?></h2>
+        <p><?php echo __('Groups in the Omeka Commons are people working together to find items across the commons to collect and share with each other.'); ?></p>
+        <a href="#" class="button"><?php echo __('Join or start a group'); ?></a>
     </div>
     <?php endif; ?>
-    
-    <div id="stats">
-        
-        <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
-        
-        <div class="sites"><span class="counter"><?php echo total_records('sites'); ?></span> sites</div>
-        
-        <span class="add-site-link"><a href="#" class="button">Add your site</a></span>
-    
-    </div>
 </div>
 
 <div id="recent-items">

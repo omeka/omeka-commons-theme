@@ -1079,14 +1079,16 @@ div[role=main]:after {
   clear: both;
 }
 
+#home .row h2 {
+  margin-top: 0;
+}
+
 #featured-site {
   width: 74.60317%;
-  float: left;
-  margin-right: 1.5873%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
   display: inline;
-}
-#featured-site h2 {
-  margin-top: 0;
 }
 #featured-site .placeholder, #featured-site img {
   width: 30%;
@@ -1098,6 +1100,25 @@ div[role=main]:after {
   height: auto;
 }
 
+#featured-group {
+  border-color: rgba(255, 255, 255, 0.15);
+  width: 68.25397%;
+  float: left;
+  margin-right: 1.5873%;
+  display: inline;
+  border-right-style: solid;
+  border-right-width: 0.0625em;
+  padding-right: 1.4375em;
+}
+
+#group-intro {
+  width: 30.15873%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
 #home .category {
   text-transform: uppercase;
   font-size: 16px;
@@ -1107,15 +1128,14 @@ div[role=main]:after {
 
 #stats {
   width: 23.80952%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
+  float: left;
+  margin-right: 1.5873%;
   display: inline;
   text-align: right;
   border-color: rgba(255, 255, 255, 0.15);
-  border-left-style: solid;
-  border-left-width: 0.0625em;
-  padding-left: 1.4375em;
+  border-right-style: solid;
+  border-right-width: 0.0625em;
+  padding-right: 1.4375em;
 }
 #stats a {
   width: 100%;
