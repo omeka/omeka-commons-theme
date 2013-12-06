@@ -125,7 +125,8 @@ textarea {
     display: block;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password] {
     padding: rhythm(.25) 10px;
 }
 
@@ -899,8 +900,9 @@ div[role=main] {
     @include padding-trailer(2);
 }
 
-.user-tags {
+div.user-tags {
     @include trailer(2);
+    min-height: intrinsic;
 }
 
 .user-tags-list {
@@ -1523,6 +1525,51 @@ div.groups-group {
         border: 0;
         height: 1.5 * $base-line-height;
         padding: rhythm(.25) gutter(10);
+    }
+}
+
+.loggedout form {
+    @include trailer();
+}
+
+/* @end */
+
+/* @group ------ Guest User ------ */
+
+div.guest-user-widget {
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: intrinsic;
+    
+    h2 {
+        border: 0;
+    }
+    
+    ul {
+        padding-left: 0;
+        font-weight: bold;
+    }
+    
+    ul.group-list {
+        padding: rhythm(.5) 0 rhythm(.5) 1.25em;
+        
+        li { font-weight: normal; }
+    }
+    
+    li:not(:last-of-type) {
+        @include padding-trailer(.5);
+    }
+    
+    &:not(:last-of-type) {
+        border-color: rgba(255,255,255,.15);
+        @include trailing-border(1px, .5, $base-font-size, solid);
+    }
+    
+    &:last-of-type {
+        @include trailer(2);
     }
 }
 

@@ -9,8 +9,8 @@
             $('body').toggleClass('grid');
         });
 
-        var groupActions = $('#group-actions, #embed-codes, .user-tags').detach();
-        var shareActions = $('.user-tags, .addthis_toolbox').detach();
+        var groupActions = $('#group-actions, .user-tags').detach();
+        var shareActions = $('.addthis_toolbox, #embed-codes').detach();
         $("#sidebar").append(groupActions, shareActions);
         
         $('#item-content-nav a').each(function() {

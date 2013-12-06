@@ -438,7 +438,8 @@ textarea {
   display: block;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password] {
   padding: 0.375em 10px;
 }
 
@@ -1361,8 +1362,9 @@ div[role=main]:after {
   padding-bottom: 3em;
 }
 
-.user-tags {
+div.user-tags {
   margin-bottom: 3em;
+  min-height: intrinsic;
 }
 
 .user-tags-list {
@@ -2042,6 +2044,46 @@ div.groups-group:last-of-type {
   border: 0;
   height: 36px;
   padding: 0.375em 2.5641%;
+}
+
+.loggedout form {
+  margin-bottom: 1.5em;
+}
+
+/* @end */
+/* @group ------ Guest User ------ */
+div.guest-user-widget {
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: intrinsic;
+}
+div.guest-user-widget h2 {
+  border: 0;
+}
+div.guest-user-widget ul {
+  padding-left: 0;
+  font-weight: bold;
+}
+div.guest-user-widget ul.group-list {
+  padding: 0.75em 0 0.75em 1.25em;
+}
+div.guest-user-widget ul.group-list li {
+  font-weight: normal;
+}
+div.guest-user-widget li:not(:last-of-type) {
+  padding-bottom: 0.75em;
+}
+div.guest-user-widget:not(:last-of-type) {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 0.6875em;
+}
+div.guest-user-widget:last-of-type {
+  margin-bottom: 3em;
 }
 
 /* @end */
