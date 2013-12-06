@@ -10,7 +10,8 @@
         });
 
         var groupActions = $('#group-actions, #embed-codes, .user-tags').detach();
-        $("#sidebar").append(groupActions);
+        var shareActions = $('.user-tags, .addthis_toolbox').detach();
+        $("#sidebar").append(groupActions, shareActions);
         
         $('#item-content-nav a').each(function() {
             var sectionId = $(this).attr('href');
