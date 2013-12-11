@@ -4,7 +4,14 @@
     <h1><?php echo __('The Omeka Commons is an open access repository of content aggregated from a network of Omeka websites.'); ?></h1>
     <a href="about" class="button"><?php echo __('Learn how to use the Omeka Commons'); ?></a>
     <span class="or_search"><?php echo __('...or start searching!'); ?></span>
-    <?php echo search_form(); ?>
+    <div id="search">
+        <form id="simple-items" action="<?php echo url('items/browse'); ?>" method="GET">
+            <input type="text" id="simple-items-keyword" size="40" name="search">
+            <input type="submit" id="simple-items-submit" value="<?php echo __('Search Items'); ?>" name="simple-items-submit">
+        </form>
+        <button class="advanced-items button"><?php echo __('Advanced Options'); ?></button>
+        <?php echo items_search_form(array('id' => "items-form")); ?>
+    </div>
 </div>
 
 <?php if (get_theme_option('Homepage Text')): ?>

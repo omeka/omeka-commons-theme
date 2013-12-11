@@ -21,7 +21,7 @@
     <!-- Plugin Stuff -->
     <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
 
-    <?php queue_css_url('http://fonts.googleapis.com/css?family=Raleway:400,600'); ?> 
+    <?php queue_css_url('http://fonts.googleapis.com/css?family=Lato:300,300italic|Raleway:400,600'); ?> 
     <?php queue_css_file('screen'); ?>
     <?php echo head_css(); ?>
     
@@ -37,6 +37,8 @@
 
     <header>
         <div class="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
+        
+        <?php echo search_form(); ?>
 
         <nav>
             <?php echo public_nav_main(); ?>
@@ -44,7 +46,14 @@
         <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
         
         <?php if (@$bodyid !== 'home'): ?>
-        <?php echo search_form(); ?>
+          <div id="search">
+              <form id="simple-items" action="<?php echo url('items/browse'); ?>" method="GET">
+                  <input type="text" id="simple-items-keyword" size="40" name="search">
+                  <input type="submit" id="simple-items-submit" value="<?php echo __('Search Items'); ?>" name="simple-items-submit">
+              </form>
+              <button class="advanced-items button"><?php echo __('Advanced Options'); ?></button>
+              <?php echo items_search_form(array('id' => "items-form")); ?>
+          </div>
         <?php endif; ?>
     </header>
     

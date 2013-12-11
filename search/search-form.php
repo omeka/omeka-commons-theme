@@ -1,10 +1,7 @@
-<div id="search">
-<div class="search tab current"><?php echo __('Site-wide Search'); ?></div>
-<div class="items tab"><?php echo __('Advanced Items-only Search'); ?></div>
 <?php echo $this->form('search-form', $options['form_attributes']); ?>
-    <?php echo $this->formText('query', $filters['query']); ?>
-    <?php echo $this->formSubmit(null, $options['submit_value']); ?>
-    <a href="#" class="advanced-site-options button"><?php echo __('Advanced Options'); ?></a>
+    <?php echo $this->formText('query', $filters['query'], array('placeholder' => 'Search the whole site')); ?>
+    <button type="submit" value="Search"><span class="icon-search"></span><span class="screen-reader-text"><?php echo __('Search'); ?></span></button>
+    <button class="advanced-site-options button "><span class="icon-ellipsis"></span><span class="screen-reader-text"><?php echo __('Advanced Options'); ?></span></button>
     <fieldset id="advanced-form">
         <fieldset id="query-types">
             <p><?php echo __('Search using this query type:'); ?></p>
@@ -26,5 +23,3 @@
         <?php endif; ?>
     </fieldset>
 </form>
-<?php echo items_search_form(array('id' => "items-form")); ?>
-</div>
