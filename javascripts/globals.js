@@ -22,6 +22,65 @@
                 $('#search-form').removeClass('focused');
             }
         });
+        
+        $('.selected-query').text($('#query-types input:checked').parent().text());
+        
+        $('#query-types input[type=checkbox]').each(function() {
+            $(this).focus(function() {
+                $(this).parent().addClass('hover');
+                if(!$('#query-types').hasClass('focused')) {
+                    $('#query-types').addClass('focused')
+                }
+            });
+        });
+
+        $('#query-types input[type=checkbox]').focusout(function() {
+            $(this).parent().removeClass('hover');
+            if($('#query-types').hasClass('focused')) {
+                $('#query-types').removeClass('focused')
+            }
+        });
+        
+        $(document).keypress(function() {
+            console.log($(':focus'));
+        });
+        
+        $('#query-types').click(function(e) {
+            e.stopPropagation();
+            $(this).toggleClass('focused');
+        });
+        
+        $('#query-types label').click(function() {
+            $('.selected-query').text($(this).text());
+            $('#query-types').removeClass('focused');
+        })
+        
+        $('.record-type').each(function() {
+            var checkbox = $(this).find('input[type=checkbox]').first();
+            if ($(checkbox).is(':checked')) {
+                $(this).addClass("on");
+            } else {
+                $(this).addClass("off");
+            }
+        });
+        
+        $('.record-type').click(function(e) {
+            e.preventDefault();
+            $(this).toggleClass('on');
+            $(this).toggleClass('off');
+            var checkbox = $(this).find('input[type=checkbox]').first();
+            if ($(checkbox).is(':checked')) {
+                $(checkbox).prop('checked', false);
+            } else {
+                $(checkbox).prop('checked', true);
+            }
+        });
+        
+        $(document).click(function() {
+            if($('#query-types').hasClass('focused')) {
+                $('#query-types').removeClass('focused');
+            }
+        });
 
         var displaySearch = function() {
             var form_id = '#' + $('.tab.current').attr('class').split(' ')[0] + '-form';

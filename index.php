@@ -18,7 +18,8 @@
 <p><?php echo get_theme_option('Homepage Text'); ?></p>
 <?php endif; ?>
 
-<div class="row container">
+<div class="row">
+    <div class="container">
     <div id="stats">
         
         <div class="items"><span class="counter"><?php echo total_records('items'); ?></span> items</div>
@@ -39,9 +40,11 @@
         <?php echo link_to($featuredSite, 'show', __('Read more about %s', metadata($featuredSite, 'Title')), array('class' => 'button')); ?>
     </div>
     <?php endif; ?>
+    </div>
 </div>
 
-<div class="row container">
+<div class="row">
+    <div class="container">
     <?php if($featuredGroups = get_random_featured_groups(1)): ?>
     <?php $featuredGroup = $featuredGroups[0]; ?>
     <div id="featured-group">
@@ -62,6 +65,7 @@
         <a href="#" class="button"><?php echo __('Join or start a group'); ?></a>
     </div>
     <?php endif; ?>
+    </div>
 </div>
 
 <div id="recent-items">

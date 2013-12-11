@@ -539,9 +539,10 @@ header {
   padding-right: 1em;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 3em;
+  padding-top: 4.5em;
   padding-bottom: 1.5em;
   text-align: right;
+  position: relative;
 }
 header:after {
   content: "";
@@ -556,14 +557,6 @@ header:after {
 .site-title {
   float: left;
   margin-top: 3.75em;
-}
-
-#home .row + .row {
-  border-color: rgba(255, 255, 255, 0.15);
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: 2.9375em;
-  margin-top: 3em;
 }
 
 /* 
@@ -706,10 +699,11 @@ header:after {
 }
 
 #search-form {
-  float: right;
-  width: 30.15873%;
-  position: relative;
-  opacity: .5;
+  position: absolute;
+  left: 1.5873%;
+  top: 3em;
+  right: 1.5873%;
+  padding: 0;
   -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
   -o-transition-property: opacity;
@@ -722,7 +716,14 @@ header:after {
   -moz-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
+  opacity: .5;
   margin: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: -0.0625em;
+  border-color: rgba(255, 255, 255, 0.15);
+  float: left;
+  text-align: right;
 }
 #search-form:hover, #search-form.focused {
   opacity: 1;
@@ -738,40 +739,145 @@ header:after {
   height: 2.25em;
   line-height: 100%;
   padding: 10px 0 10px 10px;
-  width: 70%;
+  width: 30%;
   border: 0;
-  margin: 0;
+  margin: 0 0 0 7em;
+  background-color: transparent;
+  color: #fff;
 }
 #search-form input[type=submit],
 #search-form button,
 #search-form .button,
 #search-form .groups-button {
   border: 0;
-  height: 1.8em;
-  width: 15%;
-  float: left;
+  width: 2em;
+  display: inline-block;
   background-color: #60c4a8;
   color: #fff;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  -ms-border-radius: 0px;
-  -o-border-radius: 0px;
-  border-radius: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
   line-height: 12px;
   text-shadow: none;
   clear: none;
-  padding: 0;
+  padding: 6px 3px;
   font-size: 20px;
+  margin: 2px 0;
 }
-#search-form button:first-of-type {
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+
+#record-types {
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 100%;
 }
-#search-form button:last-of-type {
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+.record-type {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 36px 4px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 24px;
+  cursor: pointer;
+}
+.record-type.off {
+  background-color: rgba(255, 255, 255, 0.05);
+  opacity: .75;
+}
+.record-type:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  padding: 4px 0;
+  bottom: 0;
+  line-height: 24px;
+  cursor: pointer;
+  text-align: center;
+}
+.record-type.on:after {
+  content: "x";
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.record-type.off:after {
+  content: "+";
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.record-type input {
+  position: absolute;
+  left: -100px;
+}
+
+#query-types {
+  display: inline-block;
+  width: 9em;
+  height: 2.5em;
+  overflow: hidden;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  float: left;
+  font-size: 12px;
+  margin: 2px 0 0;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  cursor: pointer;
+}
+#query-types .selected-query {
+  display: block;
+  padding: 4px 10px 3px;
+}
+#query-types.focused {
+  height: auto;
+}
+#query-types label {
+  display: block;
+  position: relative;
+  padding: 4px 10px;
+  background-color: #fff;
+  color: #696969;
+  text-shadow: none;
+  cursor: pointer;
+}
+#query-types label:hover {
+  background-color: #e7e7e7;
+}
+#query-types input {
+  position: absolute;
+  left: -100px;
+}
+#query-types:after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 8px;
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  -ms-border-radius: 0 3px 3px 0;
+  -o-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
 }
 
 #advanced-form {
   display: none;
+  width: 100%;
 }
 #advanced-form > fieldset {
   width: 50%;
@@ -897,7 +1003,7 @@ header nav {
   clear: right;
   float: right;
   text-transform: uppercase;
-  margin-top: 3em;
+  margin-top: 5.25em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -1019,6 +1125,7 @@ nav ul li:last-of-type {
   text-indent: -9999px;
   display: block;
   position: absolute;
+  top: 0;
 }
 
 div[role=main] {
@@ -1086,6 +1193,40 @@ div[role=main]:after {
 /* @group ------ Home ------ */
 #home #intro {
   text-align: center;
+  padding-bottom: 3em;
+}
+
+#home div[role="main"] {
+  max-width: none;
+  width: auto;
+  padding: 0;
+}
+
+#home #intro, #home #recent-items {
+  *zoom: 1;
+  max-width: 63em;
+  _width: 63em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+#home #intro:after, #home #recent-items:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#home .row {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 3em 0;
+}
+
+#home .row + .row {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 2.9375em;
 }
 
 #home #search {
@@ -1242,13 +1383,13 @@ div[role=main]:after {
 }
 
 #home #recent-items {
-  margin-top: 3em;
+  padding-top: 3em;
   border-color: rgba(255, 255, 255, 0.15);
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: -0.0625em;
   margin-bottom: 3em;
   clear: both;
+}
+#home #recent-items h2 {
+  margin-bottom: 1.5em;
 }
 
 #home .row h2 {

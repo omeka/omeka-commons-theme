@@ -167,9 +167,10 @@ td {
 
 header {
     @include container;
-    @include padding-leader(2);
+    @include padding-leader(3);
     @include padding-trailer();
     text-align: right;
+    position: relative;
 }
 
 #home header {
@@ -179,12 +180,6 @@ header {
 .site-title {
     float: left;
     @include leader(2.5);
-}
-
-#home .row + .row {
-    border-color: rgba(255,255,255,.15);
-    @include leading-border(1px, 2, $base-font-size, solid);
-    @include leader(2);
 }
 
 /* 
@@ -324,14 +319,20 @@ header {
 }
 
 #search-form {
-    float: right;
-    width: columns(5);
-    position: relative;
-    opacity: .5;
+    position: absolute;
+    left: gutter(16);
+    top: rhythm(2);
+    right: gutter(16);
+    padding: 0;
     @include transition-property(opacity);
     @include transition-duration(.25s);
     @include transition-timing-function(ease-in);
+    opacity: .5;
     margin: 0;
+    @include trailing-border(1px, 0, $base-font-size, solid);
+    border-color: rgba(255,255,255,.15);
+    float: left;
+    text-align: right;
     
     &:hover, &.focused {
         opacity: 1;
@@ -350,40 +351,142 @@ header {
         height: rhythm(1.5);
         line-height: 100%;
         padding: 10px 0 10px 10px;
-        width: 70%;
+        width: 30%;
         border: 0;
-        margin: 0;
+        margin: 0 0 0 7em;
+        background-color: transparent;
+        color: #fff;
     }
 
     input[type=submit],
     button,
     .button {
         border: 0;
-        height: rhythm(1.2);
-        width: 15%;
-        float: left;
+        width: 2em;
+        display: inline-block;
         background-color: $teal;
         color: #fff;
-        @include border-radius(0px);
+        @include border-radius(3px);
         line-height: .5 * $base-line-height;
         text-shadow: none;
         clear: none;
-        padding: 0;
+        padding: 6px 3px;
         font-size: 1.25 * $base-font-size;
+        margin: 2px 0;
+    }
+}
+
+#record-types {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 100%;
+}
+
+.record-type {
+    display: inline-block;
+    background-color: rgba(255,255,255,.2);
+    padding: 4px 36px 4px 10px;
+    @include border-radius(3px);
+    overflow: hidden;
+    position: relative;
+    margin: 2px 0 0;
+    font-size: .75 * $base-font-size;
+    line-height: $base-line-height;
+    cursor: pointer;
+    
+    &.off {
+        background-color: rgba(255,255,255,.05);
+        opacity: .75;
     }
     
-    button {
-        &:first-of-type {
-            border-right: 1px solid rgba(0,0,0,.05);
+    &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        padding: 4px 0;
+        bottom: 0;
+        line-height: $base-line-height;
+        cursor: pointer;
+        text-align: center;
+    }
+    
+    &.on:after {
+        content: "x";
+        background-color: rgba(255,255,255,.2);
+    }
+    
+    &.off:after {
+        content: "+";
+        background-color: rgba(255,255,255,.05);
+    }
+    
+    input {
+        position: absolute;
+        left: -100px;
+    }
+}
+
+#query-types {
+    display: inline-block;
+    width: 9em;
+    height: 2.5em;
+    overflow: hidden;
+    text-align: left;
+    background-color: rgba(255,255,255,.2);
+    @include border-radius(3px);
+    float: left;
+    font-size: 12px;
+    margin: 2px 0 0;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    cursor: pointer;
+    
+    
+    .selected-query {
+        display: block;
+        padding: 4px 10px 3px;
+    }
+    
+    &.focused {
+        height: auto;
+    }
+
+    label {
+        display: block;
+        position: relative;
+        padding: 4px 10px;
+        background-color: #fff;
+        color: #696969;
+        text-shadow: none;
+        cursor: pointer;
+        
+        &:hover, &.hover {
+            background-color: #e7e7e7;
         }
-        &:last-of-type {
-            border-left: 1px solid rgba(255,255,255,.15);
-        }
+    }
+
+    input {
+        position: absolute;
+        left: -100px;
+    }
+    
+    &:after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 8px;
+        padding: 4px 10px;
+        background-color: rgba(255,255,255,.2);
+        @include border-radius(0 3px 3px 0);
     }
 }
 
 #advanced-form {
     display: none;
+    width: 100%;
 
     & > fieldset { 
         width: 50%; 
@@ -522,7 +625,7 @@ header nav {
     clear: right;
     float: right;
     text-transform: uppercase;
-    @include leader(2);
+    @include leader(3.5);
     @include border-radius(3px);
 
     a {
@@ -639,6 +742,7 @@ nav ul {
     text-indent: -9999px;
     display: block;
     position: absolute;
+    top: 0;
 }
 
 div[role=main] {
@@ -698,6 +802,27 @@ div[role=main] {
 
 #home #intro {
     text-align: center;
+    @include padding-trailer(2);
+}
+
+#home div[role="main"] {
+    max-width: none;
+    width: auto;
+    padding: 0;
+}
+
+#home #intro, #home #recent-items {
+    @include container;
+}
+
+#home .row {
+    background-color: rgba(0,0,0,.4);
+    padding: rhythm(2) 0;
+}
+
+#home .row + .row {
+    border-color: rgba(255,255,255,.15);
+    @include leading-border(1px, 2, $base-font-size, solid);
 }
 
 #home #search {
@@ -812,11 +937,14 @@ div[role=main] {
 }
 
 #home #recent-items {
-    @include leader(2);
+    @include padding-leader(2);
     border-color: rgba(255,255,255,.15);
-    @include leading-border(1px, 0, $base-font-size, solid);
     @include trailer(2);
     clear: both;
+    
+    h2 {
+        @include trailer();
+    }
 }
     
 #home .row h2 { margin-top: 0; }
