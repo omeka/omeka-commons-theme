@@ -1197,7 +1197,9 @@ div[role=main]:after {
   padding: 0;
 }
 
-#home #intro, #home #recent-items {
+#home #intro,
+#home #recent-items,
+#home footer {
   *zoom: 1;
   max-width: 63em;
   _width: 63em;
@@ -1206,7 +1208,9 @@ div[role=main]:after {
   margin-left: auto;
   margin-right: auto;
 }
-#home #intro:after, #home #recent-items:after {
+#home #intro:after,
+#home #recent-items:after,
+#home footer:after {
   content: "";
   display: table;
   clear: both;
