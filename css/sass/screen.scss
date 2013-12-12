@@ -353,7 +353,7 @@ header {
         padding: 10px 0 10px 10px;
         width: 30%;
         border: 0;
-        margin: 0 0 0 7em;
+        margin: 0;
         background-color: transparent;
         color: #fff;
     }
@@ -373,6 +373,11 @@ header {
         padding: 6px 3px;
         font-size: 1.25 * $base-font-size;
         margin: 2px 0;
+
+        &:focus, &:hover {
+            outline: none;
+            @include box-shadow(0 0 3px 3px rgba(0,0,0,.25));
+        }
     }
 }
 
@@ -380,6 +385,8 @@ header {
     display: inline-block;
     vertical-align: bottom;
     line-height: 100%;
+    
+    a { color: #fff; }
 }
 
 .record-type {
@@ -393,6 +400,11 @@ header {
     font-size: .75 * $base-font-size;
     line-height: $base-line-height;
     cursor: pointer;
+    
+    &:focus, &:hover {
+        outline: none;
+        @include box-shadow(0 0 3px 3px rgba(0,0,0,.25));
+    }
     
     &.off {
         background-color: rgba(255,255,255,.05);
@@ -412,12 +424,12 @@ header {
     }
     
     &.on:after {
-        content: "x";
+        content: "\2713";
         background-color: rgba(255,255,255,.2);
     }
     
     &.off:after {
-        content: "+";
+        content: "";
         background-color: rgba(255,255,255,.05);
     }
     
@@ -428,70 +440,36 @@ header {
 }
 
 #query-types {
+  float: left;
+}
+
+.customSelect { 
     display: inline-block;
     width: 9em;
     height: 2.5em;
-    overflow: hidden;
     text-align: left;
-    background-color: rgba(255,255,255,.2);
+    background-color: #4d6d6c;
     @include border-radius(3px);
-    float: left;
     font-size: 12px;
     margin: 2px 0 0;
-    position: absolute;
-    top: 2px;
-    left: 0;
-    cursor: pointer;
-    
-    
-    .selected-query {
-        display: block;
-        padding: 4px 10px 3px;
-    }
-    
-    &.focused {
-        height: auto;
-    }
+    padding: 4px 10px;
+    cursor: default;
+    @include box-sizing(border-box);
 
-    label {
-        display: block;
-        position: relative;
-        padding: 4px 10px;
-        background-color: #fff;
-        color: #696969;
-        text-shadow: none;
-        cursor: pointer;
-        
-        &:hover, &.hover {
-            background-color: #e7e7e7;
-        }
-    }
-
-    input {
-        position: absolute;
-        left: -100px;
-    }
-    
     &:after {
         content: "\25BC";
-        position: absolute;
-        top: 0;
-        right: 0;
         font-size: 8px;
-        padding: 4px 10px;
-        background-color: rgba(255,255,255,.2);
+        padding: 3px 10px;
+        background-color: #6f8885;
         @include border-radius(0 3px 3px 0);
+        margin: -3.5em -10px 0 0;
+        float: right;
     }
-}
-
-#advanced-form {
-    display: none;
-    width: 100%;
-
-    & > fieldset { 
-        width: 50%; 
-        float: left;
-        clear: none;
+    
+    &.customSelectHover,
+    &.customSelectOpen,
+    &.customSelectFocus {
+        @include box-shadow(0 0 3px 3px rgba(0,0,0,.25));
     }
 }
 

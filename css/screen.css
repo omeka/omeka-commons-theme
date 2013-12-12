@@ -741,7 +741,7 @@ header:after {
   padding: 10px 0 10px 10px;
   width: 30%;
   border: 0;
-  margin: 0 0 0 7em;
+  margin: 0;
   background-color: transparent;
   color: #fff;
 }
@@ -766,11 +766,26 @@ header:after {
   font-size: 20px;
   margin: 2px 0;
 }
+#search-form input[type=submit]:focus, #search-form input[type=submit]:hover,
+#search-form button:focus,
+#search-form button:hover,
+#search-form .button:focus,
+#search-form .groups-button:focus,
+#search-form .button:hover,
+#search-form .groups-button:hover {
+  outline: none;
+  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+}
 
 #record-types {
   display: inline-block;
   vertical-align: bottom;
   line-height: 100%;
+}
+#record-types a {
+  color: #fff;
 }
 
 .record-type {
@@ -789,6 +804,12 @@ header:after {
   line-height: 24px;
   cursor: pointer;
 }
+.record-type:focus, .record-type:hover {
+  outline: none;
+  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+}
 .record-type.off {
   background-color: rgba(255, 255, 255, 0.05);
   opacity: .75;
@@ -805,11 +826,11 @@ header:after {
   text-align: center;
 }
 .record-type.on:after {
-  content: "x";
+  content: "\2713";
   background-color: rgba(255, 255, 255, 0.2);
 }
 .record-type.off:after {
-  content: "+";
+  content: "";
   background-color: rgba(255, 255, 255, 0.05);
 }
 .record-type input {
@@ -818,71 +839,45 @@ header:after {
 }
 
 #query-types {
+  float: left;
+}
+
+.customSelect {
   display: inline-block;
   width: 9em;
   height: 2.5em;
-  overflow: hidden;
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #4d6d6c;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  float: left;
   font-size: 12px;
   margin: 2px 0 0;
-  position: absolute;
-  top: 2px;
-  left: 0;
-  cursor: pointer;
-}
-#query-types .selected-query {
-  display: block;
-  padding: 4px 10px 3px;
-}
-#query-types.focused {
-  height: auto;
-}
-#query-types label {
-  display: block;
-  position: relative;
   padding: 4px 10px;
-  background-color: #fff;
-  color: #696969;
-  text-shadow: none;
-  cursor: pointer;
+  cursor: default;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-#query-types label:hover {
-  background-color: #e7e7e7;
-}
-#query-types input {
-  position: absolute;
-  left: -100px;
-}
-#query-types:after {
+.customSelect:after {
   content: "\25BC";
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 8px;
-  padding: 4px 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  background-color: #6f8885;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   -ms-border-radius: 0 3px 3px 0;
   -o-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
+  margin: -3.5em -10px 0 0;
+  float: right;
 }
-
-#advanced-form {
-  display: none;
-  width: 100%;
-}
-#advanced-form > fieldset {
-  width: 50%;
-  float: left;
-  clear: none;
+.customSelect.customSelectHover, .customSelect.customSelectOpen, .customSelect.customSelectFocus {
+  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 #items-form {

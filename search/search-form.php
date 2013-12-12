@@ -1,7 +1,6 @@
 <?php echo $this->form('search-form', $options['form_attributes']); ?>
     <fieldset id="query-types">
-        <span class="selected-query"></span>
-        <?php echo $this->formRadio('query_type', $filters['query_type'], array('tabindex' => '0', 'label_tabindex' => '0'), $query_types, ''); ?>
+        <?php echo $this->formSelect('query_type', $filters['query_type'], null, $query_types, ''); ?>
     </fieldset>
     <?php echo $this->formText('query', $filters['query'], array('placeholder' => 'Search the whole site')); ?>
     <fieldset id="record-types">

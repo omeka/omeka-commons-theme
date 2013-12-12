@@ -25,7 +25,7 @@
     <?php queue_css_file('screen'); ?>
     <?php echo head_css(); ?>
     
-    <?php queue_js_file('globals'); ?>
+    <?php queue_js_file(array('jquery.customSelect.min', 'globals')); ?>
     <?php echo head_js(); ?>
     
 </head>
