@@ -886,6 +886,9 @@ header:after {
   clear: both;
   line-height: 24px;
 }
+#items-form .explanation {
+  margin-top: 0.75em;
+}
 #items-form .field {
   text-align: right;
   margin-bottom: 1.5em;
@@ -2098,6 +2101,13 @@ div.user-tags {
 }
 .groups.show #primary > div:last-of-type {
   margin-bottom: 0em;
+}
+
+.groups-add-item {
+  max-height: 90%;
+}
+.groups-add-item p {
+  margin-top: 0;
 }
 
 /* @end */

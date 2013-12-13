@@ -479,6 +479,10 @@ header {
     clear: both;
     line-height: $base-line-height;
     
+    .explanation {
+        @include leader(.5);
+    }
+    
     .field {
         text-align: right;
         @include trailer();
@@ -1574,6 +1578,14 @@ div.user-tags {
                 @include trailer(0);
             }
         }
+    }
+}
+
+.groups-add-item {
+    max-height: 90%;
+    
+    p {
+        margin-top: 0;
     }
 }
 
