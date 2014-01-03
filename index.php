@@ -37,7 +37,6 @@
         <?php endif; ?>
         <h2><span class="category">Featured Site</span> <?php echo link_to($featuredSite, 'show', metadata($featuredSite, 'Title')); ?></h2>  
         <p><?php echo metadata($featuredSite, 'Description'); ?></p>
-        <?php echo link_to($featuredSite, 'show', __('Read more about %s', metadata($featuredSite, 'Title')), array('class' => 'button')); ?>
     </div>
     <?php endif; ?>
     </div>
@@ -57,7 +56,6 @@
         </div>
         <h2><span class="category">Featured Group</span> <?php echo link_to($featuredGroup, 'show', metadata($featuredGroup, 'Title')); ?></h2>  
         <p><?php echo snippet($featuredGroup->description, 0, 250); ?></p>
-        <?php echo link_to($featuredGroup, 'show', __('Read more about %s', metadata($featuredGroup, 'Title')), array('class' => 'button')); ?>
     </div>
     <div id="group-intro">
         <h2><?php echo __('What is a Group?'); ?></h2>
