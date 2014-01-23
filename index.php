@@ -59,7 +59,8 @@
     </div>
     <div id="group-intro">
         <h2><?php echo __('What is a Group?'); ?></h2>
-        <p><?php echo __('Groups in the Omeka Commons are people working together to find items across the commons to collect and share with each other.'); ?></p>
+        <p><?php echo __('Groups let users work together by collecting items from across the Commons. '); ?></p>
+        <p><?php echo __('Create a group, invite some users, and start adding items.'); ?></p>
         <a href="#" class="button"><?php echo __('Join or start a group'); ?></a>
     </div>
     <?php endif; ?>
