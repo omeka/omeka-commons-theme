@@ -461,6 +461,11 @@ h1, h2, h3, h4, h5, h6,
   font-weight: normal;
 }
 
+h1 {
+  font-size: 32px;
+  line-height: 48px;
+}
+
 a {
   text-decoration: none;
   color: #ffcc00;
@@ -1018,7 +1023,7 @@ header nav ul {
 header nav ul ul {
   display: none;
   position: absolute;
-  width: 100%;
+  width: 200px;
   z-index: 10;
   top: 3.75em;
   right: 0;
@@ -1483,6 +1488,10 @@ div[role=main]:after {
   border-color: rgba(255, 255, 255, 0.15);
   margin-bottom: 3em;
   clear: both;
+}
+.items.browse.list .no.image:after {
+  background: none transparent;
+  z-index: -1;
 }
 
 .items.browse.grid .item {

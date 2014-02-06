@@ -101,6 +101,11 @@ h1, h2, h3, h4, h5, h6,
     font-weight: normal;
 }
 
+h1 {
+    font-size: 2 * $base-font-size;
+    line-height: 2 * $base-line-height;
+}
+
 a {
     text-decoration: none;
     color: $yellow;
@@ -621,7 +626,7 @@ header nav {
         ul {
             display: none;
             position: absolute;
-            width: 100%;
+            width: 200px;
             z-index: 10;
             top: rhythm(2.5);
             right: 0;
@@ -1005,6 +1010,11 @@ div[role=main] {
         border-color: rgba(255,255,255,.15);
         @include trailer(2);
         clear: both;
+    }
+    
+    .no.image:after {
+        background: none transparent;
+        z-index: -1;
     }
 }
 
