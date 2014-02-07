@@ -12,7 +12,7 @@ function oc_public_nav_main()
         $user = current_user();
         if($user) {
             foreach($navOptions as $index=>$page) {
-                if($page['uid'] == "/commons/#") {
+                if($page['uid'] == "/omeka-commons/#") {
                     $navOptions[$index]['label'] = __('Welcome, %s', $user->name);
                 }
             }
