@@ -1,14 +1,36 @@
 <?php
 
+//When navigation is saved, it no longer gets filtered,
+//so the current user name is lost
+//oc_public_nav_main looks through the saved navigation data
+//and restores the name of the current user
+
+function oc_public_nav_main()
+{
+    $navOptions = json_decode(get_option('public_navigation_main'), true);
+    if($navOptions) {
+        $user = current_user();
+        if($user) {
+            foreach($navOptions as $index=>$page) {
+                if($page['uid'] == "/commons/#") {
+                    $navOptions[$index]['label'] = __('Welcome, %s', $user->name);
+                }
+            }
+            set_option('public_navigation_main', json_encode($navOptions));
+        }
+    }
+    return public_nav_main();
+}
+
 function oc_item_search_filters(array $params = null)
 {
     if ($params === null) {
-        $request = Zend_Controller_Front::getInstance()->getRequest(); 
+        $request = Zend_Controller_Front::getInstance()->getRequest();
         $requestArray = $request->getParams();
     } else {
         $requestArray = $params;
     }
-    
+
     $db = get_db();
     $displayArray = array();
     foreach ($requestArray as $key => $value) {
@@ -23,7 +45,7 @@ function oc_item_search_filters(array $params = null)
                         $displayValue = $itemType->name;
                     }
                     break;
-                
+
                 case 'collection':
                     $collection = $db->getTable('Collection')->find($value);
                     if ($collection) {
@@ -48,12 +70,12 @@ function oc_item_search_filters(array $params = null)
                 case 'featured':
                     $displayValue = ($value == 1 ? __('Yes') : $displayValue = __('No'));
                     break;
-                    
+
                 case 'site_title':
                     $filter = 'Site';
                     $displayValue = $value;
                     break;
-                    
+
                 case 'site_collection_id':
                     $filter = 'Site Collection';
                     $siteCollection = get_db()->getTable('SiteContext_Collection')->find($value);
@@ -79,9 +101,9 @@ function oc_item_search_filters(array $params = null)
     }
 
     $displayArray = apply_filters('item_search_filters', $displayArray, array('request_array' => $requestArray));
-    
+
     // Advanced needs a separate array from $displayValue because it's
-    // possible for "Specific Fields" to have multiple values due to 
+    // possible for "Specific Fields" to have multiple values due to
     // the ability to add fields.
     if(array_key_exists('advanced', $requestArray)) {
         $advancedArray = array();

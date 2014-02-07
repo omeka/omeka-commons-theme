@@ -21,13 +21,13 @@
     <!-- Plugin Stuff -->
     <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
 
-    <?php queue_css_url('http://fonts.googleapis.com/css?family=Lato:300,300italic|Raleway:400,600'); ?> 
+    <?php queue_css_url('http://fonts.googleapis.com/css?family=Lato:300,300italic|Raleway:400,600'); ?>
     <?php queue_css_file('screen'); ?>
     <?php echo head_css(); ?>
-    
+
     <?php queue_js_file(array('jquery.customSelect.min', 'globals')); ?>
     <?php echo head_js(); ?>
-    
+
 </head>
 
 <?php $user = (current_user()) ? ' loggedin': ' loggedout'; ?>
@@ -37,14 +37,14 @@
 
     <header>
         <div class="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
-        
+
         <?php echo search_form(); ?>
 
         <nav>
-            <?php echo public_nav_main(); ?>
+            <?php echo oc_public_nav_main(); ?>
         </nav>
         <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-        
+
         <?php if (@$bodyid !== 'home'): ?>
           <div id="search">
               <form id="simple-items" action="<?php echo url('items/browse'); ?>" method="GET">
@@ -56,5 +56,5 @@
           </div>
         <?php endif; ?>
     </header>
-    
+
     <div role="main">
