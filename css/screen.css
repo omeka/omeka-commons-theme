@@ -1870,10 +1870,11 @@ div.user-tags {
   background-color: #999;
 }
 
-.private, .closed {
+.private, .closed, .flagged {
   background-color: #f8b9b9;
   color: #a30f11;
 }
+
 .private .more-info, .closed .more-info {
   background-color: #a30f11;
 }
