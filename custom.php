@@ -89,7 +89,12 @@ function oc_item_search_filters(array $params = null)
                     $displayValue = $value;
                     break;
 
-                case 'tags':
+                case 'my-tag':
+                    $filter = 'My Tag';
+                    $displayValue = $value;
+                    break;
+
+                case 'tag':
                 case 'range':
                     $displayValue = $value;
                     break;
