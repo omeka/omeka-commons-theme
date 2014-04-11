@@ -2291,6 +2291,7 @@ div.groups-group:last-of-type {
 .login form #username-label,
 .login form #password-label,
 .login form label[for="email"] {
+  display: inline-block;
   margin-bottom: 0.75em;
 }
 .login form #remember-label, .login form #remember-label + div {
