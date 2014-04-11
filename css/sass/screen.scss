@@ -1782,6 +1782,7 @@ div.groups-group {
     #username-label, 
     #password-label,
     label[for="email"] { 
+        display: inline-block;
         @include trailer(.5); 
     }
     
