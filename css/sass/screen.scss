@@ -3,6 +3,8 @@
 
 @import "base";
 @import "compass/css3";
+@import "compass/typography";
+@import "susyone";
 
 /*
 Table of Contents
@@ -1770,14 +1772,18 @@ div.groups-group {
 
 /* @group ------ Login ------ */
 
-#login-form {
+.login form {
     padding: 0;
     @include span-columns(8 alpha);
     @include trailer();
     
     .field { @include trailer(); }
     
-    #username-label, #password-label { @include trailer(.5); }
+    #username-label, 
+    #password-label,
+    label[for="email"] { 
+        @include trailer(.5); 
+    }
     
     #remember-label, #remember-label + div {
         display: inline;
